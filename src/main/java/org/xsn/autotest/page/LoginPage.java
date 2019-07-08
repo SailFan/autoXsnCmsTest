@@ -9,8 +9,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.xsn.autotest.common.PublicMethod;
 
-public class LoginPage extends PublicMethod{
-
+public class LoginPage extends PublicMethod {
 
 	@FindBy(css = "[type=\"text\"]")
 	WebElement userNameInput;
@@ -24,24 +23,26 @@ public class LoginPage extends PublicMethod{
 	@FindBy(css = "button:nth-of-type(2)")
 	WebElement resetButton;
 
-//	public LoginPage(WebDriver webDriver) {
-//		super();
-//		this.webDriver = webDriver;
-//		PageFactory.initElements(webDriver, this);
-//	}
-		
+	@FindBy(css = "div.el-form-item:nth-child(2) > div:nth-child(1) > div:nth-child(2)")
+	WebElement usernameTips;
+	
+	@FindBy(css="div.el-form-item:nth-child(3) > div:nth-child(1) > div:nth-child(2)")
+	WebElement passwordTips;
+	
+	
+	@FindBy(css=".el-message.el-message--error p")
+	WebElement alertMessage;
+	
 	public LoginPage(WebDriver webDriver) {
 		super.webDriver = webDriver;
 		PageFactory.initElements(webDriver, this);
 		// TODO Auto-generated constructor stub
 	}
-	
+
 	public void setUserName(String userName) {
-		
-		
+
 		userNameInput.sendKeys(userName);
 	}
-
 
 	public void setPassword(String passWord) {
 		passWordInput.sendKeys(passWord);
@@ -54,6 +55,19 @@ public class LoginPage extends PublicMethod{
 	public void resetButton() {
 		resetButton.click();
 	}
+
+	public String getUserNameTips() {
+		return usernameTips.getText();
+	}
+	
+	public String getPassWordTips() {
+		return passwordTips.getText();
+	}
+	
+	public String getAlertMessage() {
+		return alertMessage.getText();
+	}
+	
 	
 	public void loginToXsn(String username, String password) {
 		this.setUserName(username);
