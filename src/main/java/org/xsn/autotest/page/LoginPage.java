@@ -29,6 +29,12 @@ public class LoginPage extends PublicMethod {
 	@FindBy(css="div.el-form-item:nth-child(3) > div:nth-child(1) > div:nth-child(2)")
 	WebElement passwordTips;
 	
+	@FindBy(css="child(1) > input:nth-child(1)")
+	WebElement userNameValue;
+	
+	@FindBy(css="div.el-form-item:nth-child(3) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)")
+	WebElement passWordValue;
+	
 	
 	@FindBy(css=".el-message.el-message--error p")
 	WebElement alertMessage;
@@ -68,6 +74,13 @@ public class LoginPage extends PublicMethod {
 		return alertMessage.getText();
 	}
 	
+	public String getUserNameValue() {
+		return userNameValue.getText();
+	}
+	
+	public String getPassWordValue() {
+		return passWordValue.getText();
+	}
 	
 	public void loginToXsn(String username, String password) {
 		this.setUserName(username);
