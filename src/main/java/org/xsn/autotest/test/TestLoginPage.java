@@ -1,8 +1,6 @@
 package org.xsn.autotest.test;
 
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.testng.Assert;
 import org.testng.annotations.BeforeTest;
 import org.testng.annotations.Test;
 import org.xsn.autotest.page.LoginPage;
