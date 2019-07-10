@@ -5,7 +5,6 @@ public class Path {
 		String rootPath = System.getProperty("user.dir");
 		String driverBasePath = rootPath+"\\src\\main\\java\\org\\xsn\\autotest\\driver\\";
 		String driverPath = driverBasePath+args;
-		System.out.println(driverPath);
 		return driverPath;
 	}
 }
