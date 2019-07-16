@@ -21,11 +21,11 @@ public class HomePage extends PublicMethod{
 	
 	
 	
-	void ClickLogoutButton() {
+	void clickLogoutButton() {
 		logoutButton.click();
 	}
 	
-	void ClickModifyButton() {
+	void clickModifyButton() {
 		modifyPasswordButton.click();
 	}
 	

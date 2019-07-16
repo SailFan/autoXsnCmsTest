@@ -84,7 +84,6 @@ public class TestLoginPage {
 		LoginPage page = new LoginPage(brower);
 		page.loginToXsn("admin", passWord);
 		String passWordValue = page.getPassWordValue();
-		System.out.println(passWordValue);
 		Assert.assertEquals(15, passWordValue.length());
 		page.closeBrower();
 	}

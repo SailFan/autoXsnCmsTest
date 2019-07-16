@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="groupsuite">
+	<test name="grouptest">
+		<groups>
+			<run>
+			<!-- 普通的组 -->
+				<include name="group2"></include>
+				<!-- 还支持正则表达式，这儿的（.*）表示匹配所有， 而不是*通配符 -->
+				<include name="service.*"></include>
+			</run>
+		</groups>
+		<classes>
+			<class name="org.xsn.autotest.testcase.Test4"></class>
+		</classes>
+	</test>
+</suite>
+
+
+
