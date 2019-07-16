@@ -10,20 +10,20 @@ public class ModifyPasswordPage extends PublicMethod {
 
 	@FindBy(xpath = "/html/body/div[1]/section/section/main/div/form/div[2]/div/div/input")
 	WebElement usernameInput;
-
-	@FindBy(xpath = "/html/body/div[1]/section/section/main/div/form/div[3]/div/div[1]/input")
+	
+	@FindBy(xpath="/html/body/div[1]/section/section/main/div/div/div[2]/div[1]/form/div[2]/div/div[1]/input")
 	WebElement passwordOldInput;
 
-	@FindBy(xpath = "/html/body/div[1]/section/section/main/div/form/div[4]/div/div/input")
+	@FindBy(xpath = "/html/body/div[1]/section/section/main/div/div/div[2]/div[1]/form/div[3]/div/div/input")
 	WebElement passwordNewInput1;
 
-	@FindBy(xpath = "/html/body/div[1]/section/section/main/div/form/div[5]/div/div[1]/input")
+	@FindBy(xpath = "/html/body/div[1]/section/section/main/div/div/div[2]/div[1]/form/div[4]/div/div[1]/input")
 	WebElement passwordNewInput2;
 
 	@FindBy(xpath = "/html/body/div[1]/section/section/main/div/form/div[6]/div/button[2]")
 	WebElement cancelButton;
 
-	@FindBy(xpath = "/html/body/div[1]/section/section/main/div/form/div[6]/div/button[1]")
+	@FindBy(xpath = "/html/body/div[1]/section/section/main/div/div/div[2]/div[1]/form/div[5]/div/button[1]")
 	WebElement confirmButton;
 
 	@FindBy(xpath = "/html/body/div[1]/section/section/main/div/form/div[3]/div/div[2]")
@@ -98,7 +98,7 @@ public class ModifyPasswordPage extends PublicMethod {
 	 * modify password
 	 */
 
-	void modifyPassword(String oldPassword, String newPassword, String password) {
+	public void modifyPassword(String oldPassword, String newPassword, String password) {
 		this.setPasswordOldInput(oldPassword);
 		this.setNewPasswordFirst(newPassword);
 		this.setNewPasswordSecond(password);

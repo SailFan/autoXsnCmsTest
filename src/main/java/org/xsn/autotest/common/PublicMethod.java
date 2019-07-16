@@ -24,6 +24,11 @@ public class PublicMethod {
 		webDriver.close();
 	}
 	
+	public String currentPageUrl() {
+		return webDriver.getCurrentUrl();
+	}
+	
+	
 //	悄悄的等待
 	public void myQQWait(long time) {
 		webDriver.manage().timeouts().implicitlyWait(time, TimeUnit.SECONDS);
