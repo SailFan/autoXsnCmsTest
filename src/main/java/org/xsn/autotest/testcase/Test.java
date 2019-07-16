@@ -3,13 +3,14 @@ package org.xsn.autotest.testcase;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.BeforeMethod;
+import org.xsn.autotest.common.Path;
 
 public class Test {
 	ChromeDriver brower;
 	@BeforeMethod
 	public void setUp() {
 		System.setProperty("webdriver.chrome.driver",
-				"C:\\Users\\ikan\\Desktop\\driver\\chrome75\\chromedriver.exe");
+				Path.getDir("c"));
 		brower = new ChromeDriver();
 		brower.get("http://test.admin.vocy.cn");
 		brower.manage().window().maximize();
