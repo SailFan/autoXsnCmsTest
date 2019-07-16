@@ -11,7 +11,7 @@ public class HomePage extends PublicMethod{
 	@FindBy(xpath = "/html/body/div[1]/section/header/div/div[1]/div[2]/ul/li[2]/a")
 	WebElement logoutButton;
 	
-	@FindBy(xpath = "/html/body/div[1]/section/header/div/div[1]/div[2]/ul/li[1]/a")
+	@FindBy(css = "#app > section > header > div > div.el-row > div.el-col.el-col-8 > ul > li:nth-child(1) > a")
 	WebElement modifyPasswordButton;
 
 	public HomePage(WebDriver webDriver) {
@@ -21,11 +21,11 @@ public class HomePage extends PublicMethod{
 	
 	
 	
-	void clickLogoutButton() {
+	public void clickLogoutButton() {
 		logoutButton.click();
 	}
 	
-	void clickModifyButton() {
+	public void clickModifyButton() {
 		modifyPasswordButton.click();
 	}
 	
