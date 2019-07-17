@@ -87,4 +87,9 @@ public class TestLoginPage {
 		Assert.assertEquals(15, passWordValue.length());
 		page.closeBrower();
 	}
+	
+	
+	
+	
+	
 }

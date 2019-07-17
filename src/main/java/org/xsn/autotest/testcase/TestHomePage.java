@@ -2,10 +2,10 @@ package org.xsn.autotest.testcase;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.BeforeClass;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
 import org.xsn.autotest.common.Util;
 import org.xsn.autotest.page.HomePage;
@@ -30,6 +30,16 @@ public class TestHomePage {
 		homePage.clickModifyButton();
 		homePage.myDDwait(10).until(ExpectedConditions.titleIs("修改密码"));
 		Assert.assertEquals("修改密码", homePage.currentPageTitle());
+	}
+
+	@Test
+	public void testLoginout() {
+//		loginPage.loginToXsn("admin", "123456");
+		homePage.myDDwait(10).until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("退出")));
+		homePage.clickLogoutButton();
+		homePage.myDDwait(10).until(ExpectedConditions.visibilityOf(homePage.confireLoginButton));
+		homePage.confireLogout();
+		Assert.assertEquals(homePage.currentPageUrl(), "http://test.admin.vocy.cn/#/login");
 	}
 
 }
