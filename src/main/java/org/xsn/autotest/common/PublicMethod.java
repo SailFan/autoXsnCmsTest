@@ -39,4 +39,8 @@ public class PublicMethod {
 		WebDriverWait wait = new WebDriverWait(webDriver, timeOutInSeconds);
 		return wait;
 	}
+	
+	public void refreshPage() {
+		webDriver.navigate().refresh();
+	}
 }

@@ -1,42 +1,89 @@
 package org.xsn.autotest.testcase;
 
-import org.apache.log4j.Logger;
+import java.util.Iterator;
+import java.util.Set;
+
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.BeforeClass;
+import org.testng.annotations.Ignore;
 import org.xsn.autotest.common.Util;
 
 public class Test {
-	private static final Logger logger = Logger.getLogger(Test.class);
 	ChromeDriver brower;
-
-	@BeforeMethod
-	public void setUp() {
-		brower = Util.openBrower("chrome");
-		/*
-		 * System.setProperty("webdriver.chrome.driver", Path.getDir("chrome")); brower
-		 * = new ChromeDriver(); brower.get("http://test.admin.vocy.cn");
-		 * brower.manage().window().maximize();
-		 */
+	
+	@BeforeClass
+	public void setUp() throws Exception {
+		System.setProperty("webdriver.chrome.driver","D:\\code\\autotestxsn\\autotest\\src\\main\\java\\org\\xsn\\autotest\\driver\\chromedriver.exe");
+		brower = new ChromeDriver();
 	}
-
 	@org.testng.annotations.Test
-	public void test1() throws InterruptedException {
-		logger.info("ahah");
-		brower.get("http://test.admin.vocy.cn");
-		brower.findElement(By.cssSelector(
-				"div.el-form-item:nth-child(2) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)"))
-				.sendKeys("admin");
-		brower.findElement(By.cssSelector("input[type=\"password\"]")).sendKeys("123456");
-		brower.findElement(By.cssSelector("button.el-button--primary:nth-child(1)")).click();
-		new WebDriverWait(brower, 10).until(ExpectedConditions.visibilityOfAllElementsLocatedBy(
-				By.xpath("/html/body/div[1]/section/header/div/div[1]/div[2]/ul/li[1]/a")));
-		brower.findElement(By.partialLinkText("修改密码")).click();
-
-		brower.manage().wait(1000);
-		brower.findElement(By.cssSelector(".header-right > li:nth-child(1) > a:nth-child(1)")).click();
+	@Ignore
+	public void test1() {
+		ChromeDriver brower = Util.openBrower("chrome");
+		brower.get("http://demo.guru99.com/test/delete_customer.php");
+		brower.findElement(By.name("cusid")).sendKeys("53920");					
+		brower.findElement(By.name("submit")).submit();
+		Alert alert = brower.switchTo().alert();
+		String text = alert.getText();
+		alert.accept();
+		System.out.println(text);
 	}
-
+	
+	
+	
+	
+	
+	@org.testng.annotations.Test
+	@Ignore
+	public void test2() {
+		System.setProperty("webdriver.chrome.driver","D:\\code\\autotestxsn\\autotest\\src\\main\\java\\org\\xsn\\autotest\\driver\\chromedriver.exe");
+		ChromeDriver brower = new ChromeDriver();
+		brower.manage().window().maximize();
+		brower.get("http://demo.guru99.com/popup.php");
+		brower.findElement(By.xpath("//*[contains(@href,'popup.php')]")).click();
+		String mainWindow = brower.getWindowHandle();
+		Set<String> handles = brower.getWindowHandles();
+		Iterator<String> iterator = handles.iterator(); 
+		while (iterator.hasNext()) {
+			String next = iterator.next();
+			System.out.println(next);
+			if(!mainWindow.equalsIgnoreCase(next)) {
+				brower.switchTo().window(next);
+				brower.findElement(By.name("emailid"))
+                .sendKeys("gaurav.3n@gmail.com");
+				brower.findElement(By.name("btnLogin")).click();
+			}
+		}
+		 brower.switchTo().window("handles");
+		
+	}
+	
+	@org.testng.annotations.Test
+	@Ignore
+	public void test3() {
+		System.setProperty("webdriver.chrome.driver","D:\\code\\autotestxsn\\autotest\\src\\main\\java\\org\\xsn\\autotest\\driver\\chromedriver.exe");
+		
+		brower.manage().window().maximize();
+		brower.get("http://www.baidu.com");
+	}
+	
+	@org.testng.annotations.Test
+	public void  test4() {
+		
+		
+		brower.get("http://www.baidu.com");
+//		brower.navigate().to("http://test.admin.vocy.cn");
+	}
+	@org.testng.annotations.Test
+	public void test5() {
+		brower.get("http://test.site.vocy.cn");
+		
+	}
+	
+	
+	
+	
+	
 }

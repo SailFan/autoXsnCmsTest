@@ -27,28 +27,28 @@ public class ModifyPasswordPage extends PublicMethod {
 	WebElement confirmButton;
 
 	@FindBy(xpath = "/html/body/div[1]/section/section/main/div/form/div[3]/div/div[2]")
-	WebElement oldPasswordTips;
+	public WebElement oldPasswordTips;
 
-	@FindBy(xpath = "/html/body/div[1]/section/section/main/div/form/div[4]/div/div[2]")
-	WebElement newPasswordFirstTips;
+	@FindBy(xpath = "/html/body/div/section/section/main/div/div/div[2]/div[1]/form/div[3]/div/div[2]")
+	public WebElement newPasswordFirstTips;
 
-	@FindBy(xpath = "/html/body/div[1]/section/section/main/div/form/div[5]/div/div[2]")
-	WebElement newPasswordSecondTips;
+	@FindBy(xpath = "/html/body/div/section/section/main/div/div/div[2]/div[1]/form/div[4]/div/div[2]")
+	public WebElement newPasswordSecondTips;
 
 	public ModifyPasswordPage(WebDriver webDriver) {
 		super.webDriver = webDriver;
 		PageFactory.initElements(webDriver, this);
 	}
 
-	void setPasswordOldInput(String oldPassword) {
+	public void setPasswordOldInput(String oldPassword) {
 		passwordOldInput.sendKeys(oldPassword);
 	}
 
-	void setNewPasswordFirst(String newPassword) {
+	public void setNewPasswordFirst(String newPassword) {
 		passwordNewInput1.sendKeys(newPassword);
 	}
 
-	void setNewPasswordSecond(String password) {
+	public void setNewPasswordSecond(String password) {
 		passwordNewInput2.sendKeys(password);
 	}
 
@@ -56,7 +56,7 @@ public class ModifyPasswordPage extends PublicMethod {
 		confirmButton.click();
 	}
 
-	void resetInput() {
+	public void resetInput() {
 		cancelButton.click();
 
 	}
@@ -66,31 +66,31 @@ public class ModifyPasswordPage extends PublicMethod {
 	 * 
 	 * @return
 	 */
-	String getUsernameInputValue() {
+	public String getUsernameInputValue() {
 		return usernameInput.getAttribute("value");
 	}
 
-	String getOldPasswordInputValue() {
+	public String getOldPasswordInputValue() {
 		return passwordOldInput.getAttribute("value");
 	}
 
-	String getPasswordNewInput1Value() {
+	public String getPasswordNewInput1Value() {
 		return passwordNewInput1.getAttribute("value");
 	}
 
-	String getPsswordNewInput2Value() {
+	public String getPsswordNewInput2Value() {
 		return passwordNewInput2.getAttribute("value");
 	}
 
-	String getOldPasswordTips() {
+	public String getOldPasswordTips() {
 		return oldPasswordTips.getText();
 	}
 
-	String getNewPasswordFirstTips() {
+	public String getNewPasswordFirstTips() {
 		return newPasswordFirstTips.getText();
 	}
 
-	String getNewPasswordSecondTips() {
+	public String getNewPasswordSecondTips() {
 		return newPasswordSecondTips.getText();
 	}
 

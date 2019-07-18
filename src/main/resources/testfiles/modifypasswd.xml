@@ -1,8 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
-<suite name="login">
-	<test name="testlogin">
-		
+<suite name="modify_suite">
+	<test name="modify_test">
+		<groups>
+			<run>
+				<include name="check"></include>
+			</run>
+		</groups>
+		<classes>
+			<class name="org.xsn.autotest.testcase.TestModify"></class>
+		</classes>
 	</test>
 </suite>
 

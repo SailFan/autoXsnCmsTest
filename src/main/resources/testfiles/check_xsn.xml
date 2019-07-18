@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="testxsn">
+	<test name="test2">
+		<groups>
+			<run>
+				<include name="group2"></include>
+			</run>
+		</groups>
+		<classes>
+			<class name="org.xsn.autotest.testcase.Test2"></class>
+		</classes>
+	</test>
+	<test name="newtest">
+		<groups>
+			<run>
+				<include name="group1"></include>
+			</run>
+		</groups>
+		<classes>
+			<class name="org.xsn.autotest.testcase.NewTest"></class>
+		</classes>
+	</test>
+	<test name="sucess">
+		<groups>
+			<run>
+				<include name="group3"></include>
+			</run>
+		</groups>
+		<classes>
+			<class name="org.xsn.autotest.testcase.NewTest"></class>
+			<class name="org.xsn.autotest.testcase.Test2"></class>
+		</classes>
+	</test>
+	
+	
+	<!-- 这样执行肯定要面临一个问题就是浏览器初始化的问题，问浏览器初始化什么时候执行 -->
+	<!-- 通过分组来运行来运行，分好多好多的组 -->
+</suite>
