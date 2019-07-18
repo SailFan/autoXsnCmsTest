@@ -1,9 +1,16 @@
 package org.xsn.autotest.common;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.SimpleFormatter;
 
+import org.junit.jupiter.api.Tag;
+import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
+import bsh.This;
 
 public class PublicMethod {
 	public WebDriver webDriver;
@@ -42,5 +49,11 @@ public class PublicMethod {
 	
 	public void refreshPage() {
 		webDriver.navigate().refresh();
+	}
+	
+	public void snapImage() {
+		Date date = new Date();
+//		https://www.guru99.com/testng-execute-multiple-test-suites.html
+		String string = new SimpleDateFormat("yyyyMMddhhmmss").format(date);
 	}
 }
