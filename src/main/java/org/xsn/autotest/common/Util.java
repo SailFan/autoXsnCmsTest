@@ -5,8 +5,6 @@ import org.openqa.selenium.chrome.ChromeDriver;
 public class Util {
 
 	public static ChromeDriver openBrower(String brow) {
-		/*System.setProperty("webdriver.chrome.driver",
-				"C:\\Users\\ikan\\Desktop\\driver\\chromedriver_win32\\chromedriver.exe");*/
 		System.setProperty("webdriver.chrome.driver",Path.getDir(brow));
 		ChromeDriver brower = new ChromeDriver();
 		brower.get("http://test.admin.vocy.cn");

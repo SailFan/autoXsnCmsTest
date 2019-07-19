@@ -1,20 +1,33 @@
 package org.xsn.autotest.common;
 
+import java.io.File;
+import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.concurrent.TimeUnit;
-import java.util.logging.SimpleFormatter;
 
-import org.junit.jupiter.api.Tag;
-import org.junit.jupiter.api.Test;
+import org.apache.commons.io.FileUtils;
+import org.openqa.selenium.OutputType;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-import bsh.This;
-
 public class PublicMethod {
-	public WebDriver webDriver;
+	public static WebDriver webDriver;
 	
+	/**
+	 * 
+	 * 待优化
+	 * @return
+	 */
+//	public static WebDriver getDriver() {
+//		if (webDriver == null) {
+//			WebDriver webDriver ;
+//			System.setProperty("webdriver.firefox.marionette","C:\\geckodriver.exe");
+//			webDriver = new FirefoxDriver();
+//		}
+//		 return webDriver;
+//	}
 	
 	public String currentPageTitle() {
 		return webDriver.getTitle();
@@ -51,9 +64,19 @@ public class PublicMethod {
 		webDriver.navigate().refresh();
 	}
 	
-	public void snapImage() {
-		Date date = new Date();
-//		https://www.guru99.com/testng-execute-multiple-test-suites.html
-		String string = new SimpleDateFormat("yyyyMMddhhmmss").format(date);
+	public static void snapImage() {
+		String string = new SimpleDateFormat("yyyyMMddhhmmss").format(new Date());
+		TakesScreenshot scrShot   = (TakesScreenshot)webDriver;
+		File SrcFile = scrShot.getScreenshotAs(OutputType.FILE);
+		try {
+			FileUtils.copyFile(SrcFile, new File(System.getProperty("user.dir")+"//image//"+string+".png"));
+			System.out.println(new File(System.getProperty("user.dir")+"//image//"+string+".png"));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
 	}
+	
+	
+	
 }
