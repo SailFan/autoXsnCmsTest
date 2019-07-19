@@ -18,7 +18,7 @@ public class TestHomePage {
 
 	@BeforeClass
 	public void setUp() {
-		brower = Util.openBrower("chrome");
+		brower = Util.openBrower("chrome",null);
 		loginPage = new LoginPage(brower);
 		homePage = new HomePage(brower);
 	}

@@ -1,5 +1,6 @@
 package org.xsn.autotest.testcase;
 
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
@@ -12,14 +13,14 @@ import org.xsn.autotest.page.LoginPage;
 import org.xsn.autotest.page.ModifyPasswordPage;
 
 public class TestModify {
-	ChromeDriver brower;
+	WebDriver brower;
 	ModifyPasswordPage modifyPasswordPage;
 	LoginPage loginpage;
 	HomePage homePage;
 
 	@BeforeTest(alwaysRun = true)
 	public void setUp() {
-		brower = Util.openBrower("chrome");
+		brower = Util.openBrower("Chrome", null);
 		modifyPasswordPage = new ModifyPasswordPage(brower);
 		loginpage = new LoginPage(brower);
 		homePage = new HomePage(brower);
