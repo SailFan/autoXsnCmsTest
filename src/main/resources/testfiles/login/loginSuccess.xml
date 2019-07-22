@@ -4,7 +4,7 @@
 	<test name="testlogin">
 		<groups>
 			<run>
-				<include name="Unverified"></include>
+				<include name="correct"></include>
 			</run>
 		</groups>
 		<classes>

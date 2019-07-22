@@ -97,8 +97,6 @@ public class TestModify {
 		modifyPasswordPage.setPasswordOldInput("123456789");
 		modifyPasswordPage.setNewPasswordSecond("1234567890");
 		modifyPasswordPage.setNewPasswordFirst("1234567890");
-//		等待alert弹窗出现， 断言旧密码验证错误
-//		modifyPasswordPage.myDDwait(10).until(ExpectedConditions.visibilityOf(modifyPasswordPage.newPasswordSecondTips));
 		Assert.assertEquals("旧密码验证错误", modifyPasswordPage.getNewPasswordSecondTips(), "旧密码验证错误");
 	}
 }
