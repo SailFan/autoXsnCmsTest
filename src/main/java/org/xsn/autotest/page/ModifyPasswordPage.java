@@ -1,5 +1,7 @@
 package org.xsn.autotest.page;
 
+import java.util.List;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -7,23 +9,26 @@ import org.openqa.selenium.support.PageFactory;
 import org.xsn.autotest.common.PublicMethod;
 
 public class ModifyPasswordPage extends PublicMethod {
+	
+//	@FindBy(css="input")
+//	List<WebElement> list;
 
-	@FindBy(xpath = "/html/body/div[1]/section/section/main/div/form/div[2]/div/div/input")
+	@FindBy(css = "input[type=\"text\"]")
 	WebElement usernameInput;
 	
-	@FindBy(xpath="/html/body/div[1]/section/section/main/div/div/div[2]/div[1]/form/div[2]/div/div[1]/input")
+	@FindBy(xpath="/html/body/div/section/section/main/div/div/div[2]/div[1]/form/div[2]/div/div[1]/input")
 	WebElement passwordOldInput;
 
-	@FindBy(xpath = "/html/body/div[1]/section/section/main/div/div/div[2]/div[1]/form/div[3]/div/div/input")
+	@FindBy(xpath = "/html/body/div/section/section/main/div/div/div[2]/div[1]/form/div[3]/div/div/input")
 	WebElement passwordNewInput1;
 
-	@FindBy(xpath = "/html/body/div[1]/section/section/main/div/div/div[2]/div[1]/form/div[4]/div/div[1]/input")
+	@FindBy(xpath = "/html/body/div/section/section/main/div/div/div[2]/div[1]/form/div[4]/div/div[1]/input")
 	WebElement passwordNewInput2;
 
-	@FindBy(xpath = "/html/body/div[1]/section/section/main/div/form/div[6]/div/button[2]")
+	@FindBy(xpath = "/html/body/div/section/section/main/div/div/div[2]/div[1]/form/div[5]/div/button[2]")
 	WebElement cancelButton;
 
-	@FindBy(xpath = "/html/body/div[1]/section/section/main/div/div/div[2]/div[1]/form/div[5]/div/button[1]")
+	@FindBy(xpath = "/html/body/div/section/section/main/div/div/div[2]/div[1]/form/div[5]/div/button[1]")
 	WebElement confirmButton;
 
 	@FindBy(xpath = "/html/body/div[1]/section/section/main/div/form/div[3]/div/div[2]")

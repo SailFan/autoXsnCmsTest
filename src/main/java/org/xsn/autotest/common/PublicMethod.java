@@ -79,8 +79,9 @@ public class PublicMethod {
 
 	}
 
-	public void getCurrentHandle() {
-		webDriver.getWindowHandle();
+	public String getCurrentHandle() {
+		String handle = webDriver.getWindowHandle();
+		return handle;
 	}
 
 	public Set<String> getCurrentHandles() {
@@ -88,9 +89,6 @@ public class PublicMethod {
 		return handles;
 	}
 
-	public void refreshBrower() {
-		webDriver.navigate().refresh();
-	}
 
 	public void forwardBrower() {
 		webDriver.navigate().forward();
@@ -102,5 +100,9 @@ public class PublicMethod {
 
 	public void navigateTo(String url) {
 		webDriver.navigate().to(url);
+	}
+	
+	public void sWTCurr() {
+		webDriver.switchTo().window(getCurrentHandle());
 	}
 }
