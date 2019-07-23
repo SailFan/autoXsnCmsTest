@@ -1,35 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
 <suite name="testxsn">
-	<test name="test2">
+	<test name="login">
 		<groups>
 			<run>
-				<include name="group2"></include>
+				<include name="check"></include>
 			</run>
 		</groups>
 		<classes>
-			<class name="org.xsn.autotest.testcase.Test2"></class>
+			<class name="org.xsn.autotest.testcase.TestLoginPage"></class>
 		</classes>
 	</test>
-	<test name="newtest">
+	<test name="modifypassword">
 		<groups>
 			<run>
-				<include name="group1"></include>
+				<include name="check"></include>
 			</run>
 		</groups>
 		<classes>
-			<class name="org.xsn.autotest.testcase.NewTest"></class>
+			<class name="org.xsn.autotest.testcase.TestModify"></class>
 		</classes>
 	</test>
-	<test name="sucess">
+	<test name="home">
 		<groups>
 			<run>
-				<include name="group3"></include>
+				<include name="check"></include>
 			</run>
 		</groups>
 		<classes>
-			<class name="org.xsn.autotest.testcase.NewTest"></class>
-			<class name="org.xsn.autotest.testcase.Test2"></class>
+			<class name="org.xsn.autotest.testcase.TestHomePage"></class>
 		</classes>
 	</test>
 	

@@ -39,12 +39,19 @@ public class ModifyPasswordPage extends PublicMethod {
 
 	@FindBy(xpath = "/html/body/div/section/section/main/div/div/div[2]/div[1]/form/div[4]/div/div[2]")
 	public WebElement newPasswordSecondTips;
+	
+	@FindBy(css="div[role=\"alert\"]")
+	public WebElement alertMessage;
 
 	public ModifyPasswordPage(WebDriver webDriver) {
 		super.webDriver = webDriver;
 		PageFactory.initElements(webDriver, this);
 	}
-
+	
+	public String getAlertMessage() {
+		return alertMessage.getText();
+	}
+	
 	public void setPasswordOldInput(String oldPassword) {
 		passwordOldInput.sendKeys(oldPassword);
 	}
@@ -57,7 +64,7 @@ public class ModifyPasswordPage extends PublicMethod {
 		passwordNewInput2.sendKeys(password);
 	}
 
-	void clickLoginButton() {
+	public void clickLoginButton() {
 		confirmButton.click();
 	}
 

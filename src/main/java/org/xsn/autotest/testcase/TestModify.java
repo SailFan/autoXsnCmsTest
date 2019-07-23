@@ -34,6 +34,11 @@ public class TestModify {
 		modifyPasswordPage.refreshPage();
 //		modifyPasswordPag
 	}
+	
+	@org.testng.annotations.AfterClass
+	public void AfterClass() {
+		modifyPasswordPage.quitBrower();
+	}
 
 	/*
 	 * @BeforeMethod(groups = { "correct", "check" }) public void beforeMethod() {
@@ -43,11 +48,11 @@ public class TestModify {
 	 * homePage.myDDwait(10).until(ExpectedConditions.visibilityOf(homePage.
 	 * modifyPasswordButton)); homePage.clickModifyButton(); }
 	 */
-	@BeforeMethod
-	public void beforeMethod() {
-		modifyPasswordPage.refreshPage();
-
-	}
+	/*
+	 * @BeforeMethod public void beforeMethod() { modifyPasswordPage.refreshPage();
+	 * 
+	 * }
+	 */
 
 	@Test(groups = { "correct" })
 	public void testModifySuccess() throws InterruptedException {
@@ -61,10 +66,13 @@ public class TestModify {
 	}
 
 	@Test(groups = { "check" })
-	@Ignore
 	public void testModifyPasswordEmtpy() {
 		logger.debug("testModifyPasswordEmtpy method start");
-		modifyPasswordPage.modifyPassword("123456", "", "");
+		modifyPasswordPage.refreshPage();
+		modifyPasswordPage.setPasswordOldInput("123456");
+		modifyPasswordPage.setNewPasswordFirst("");
+		modifyPasswordPage.setNewPasswordSecond("");
+		modifyPasswordPage.clickLoginButton();
 		modifyPasswordPage.myDDwait(10).until(ExpectedConditions.visibilityOf(modifyPasswordPage.newPasswordFirstTips));
 		modifyPasswordPage.myDDwait(10)
 				.until(ExpectedConditions.visibilityOf(modifyPasswordPage.newPasswordSecondTips));
@@ -75,9 +83,9 @@ public class TestModify {
 	}
 
 	@Test(groups = { "check" })
-	@Ignore
 	public void testResetButton() {
 		logger.debug("testResetButton method start");
+		modifyPasswordPage.refreshPage();
 		modifyPasswordPage.setPasswordOldInput("123456");
 		modifyPasswordPage.setNewPasswordFirst("12121");
 		modifyPasswordPage.setNewPasswordSecond("asdf");
@@ -91,11 +99,12 @@ public class TestModify {
 	}
 
 	@Test(groups = { "check" })
-	@Ignore
 	public void testOnlyFirstNewPassword() {
 		logger.debug("testOnlyFirstNewPassword method start");
+		modifyPasswordPage.refreshPage();
 		modifyPasswordPage.setPasswordOldInput("123456");
 		modifyPasswordPage.setNewPasswordFirst("12121");
+		modifyPasswordPage.clickLoginButton();
 		Assert.assertEquals("wen", modifyPasswordPage.getUsernameInputValue(), "断言回写名字是否为wen");
 		Assert.assertEquals("请确认新密码", modifyPasswordPage.getNewPasswordSecondTips(), "请确认新密码");
 		logger.debug("testOnlyFirstNewPassword method end");
@@ -103,11 +112,12 @@ public class TestModify {
 	}
 
 	@Test(groups = { "check" })
-	@Ignore
 	public void testOnlySecondNewPassword() {
 		logger.debug("testOnlySecondNewPassword method start");
+		modifyPasswordPage.refreshPage();
 		modifyPasswordPage.setPasswordOldInput("123456");
 		modifyPasswordPage.setNewPasswordSecond("1234567");
+		modifyPasswordPage.clickLoginButton();
 		modifyPasswordPage.myDDwait(10).until(ExpectedConditions.visibilityOf(modifyPasswordPage.newPasswordFirstTips));
 		modifyPasswordPage.myDDwait(10)
 				.until(ExpectedConditions.visibilityOf(modifyPasswordPage.newPasswordSecondTips));
@@ -133,11 +143,13 @@ public class TestModify {
 	@Test(groups = { "check" })
 	public void testErrorOldPassword() {
 		logger.debug("testErrorOldPassword method start");
+		modifyPasswordPage.refreshPage();
 		modifyPasswordPage.setPasswordOldInput("123456789");
-		modifyPasswordPage.setNewPasswordSecond("1234567890");
 		modifyPasswordPage.setNewPasswordFirst("1234567890");
-		
-		Assert.assertEquals("旧密码验证错误", modifyPasswordPage.getNewPasswordSecondTips(), "旧密码验证错误");
+		modifyPasswordPage.setNewPasswordSecond("1234567890");
+		modifyPasswordPage.clickLoginButton();
+		modifyPasswordPage.myDDwait(10).until(ExpectedConditions.visibilityOf(modifyPasswordPage.alertMessage));
+		Assert.assertEquals("旧密码验证错误", modifyPasswordPage.getAlertMessage(), "旧密码验证错误");
 		logger.debug("testErrorOldPassword method end");
 		Reporter.log("测试旧密码输入错误");
 	}
