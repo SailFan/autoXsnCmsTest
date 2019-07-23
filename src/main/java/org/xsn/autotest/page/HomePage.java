@@ -2,16 +2,21 @@ package org.xsn.autotest.page;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.testng.annotations.Factory;
 import org.xsn.autotest.common.PublicMethod;
 
 public class HomePage extends PublicMethod {
-
-	@FindBy(xpath = "/html/body/div/section/header/div/div[1]/div[2]/ul/li[3]/a")
+	
+	@FindBy(partialLinkText = "退出")
 	WebElement logoutButton;
-
+	
+	@FindBy(css=".header-right li:nth-of-type(4)")
+	WebElement currentUser;
+	
+	
 	@FindBy(css = "#app > section > header > div > div.el-row > div.el-col.el-col-8 > ul > li:nth-child(1) > a")
 	public WebElement modifyPasswordButton;
 

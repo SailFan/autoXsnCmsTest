@@ -10,16 +10,22 @@ import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Ignore;
 import org.testng.annotations.Test;
 import org.xsn.autotest.common.Util;
+import org.xsn.autotest.page.HomePage;
 import org.xsn.autotest.page.LoginPage;
 
 public class TestLoginPage {
 	private static final Logger logger = Logger.getLogger(TestLoginPage.class);
 	WebDriver brower;
-
+	HomePage homePage;
+	LoginPage page;
 	@BeforeMethod(groups = { "correct", "check"})
 	public void setUp() throws Exception {
 		brower = Util.openBrower("chrome", null);
 		logger.debug("浏览器初始化完成");
+		homePage = new HomePage(brower);
+		page = new LoginPage(brower);
+		
+		
 	}
 
 	@Test(groups = { "correct"})

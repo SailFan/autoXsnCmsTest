@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class PublicMethod {
 	public static WebDriver webDriver;
-
+	
 	/**
 	 * 
 	 * 待优化
