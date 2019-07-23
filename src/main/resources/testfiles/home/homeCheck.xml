@@ -4,11 +4,11 @@
 	<test name="testlogin">
 		<groups>
 			<run>
-				<include name="Unverified"></include>
+				<include name="check"></include>
 			</run>
 		</groups>
 		<classes>
-			<class name="org.xsn.autotest.testcase.TestLoginPage"></class>
+			<class name="org.xsn.autotest.testcase.TestHomePage"></class>
 		</classes>
 	</test>
 </suite>
