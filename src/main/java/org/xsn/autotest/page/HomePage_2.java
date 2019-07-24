@@ -1,5 +1,6 @@
 package org.xsn.autotest.page;
 
+import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -30,7 +31,9 @@ public class HomePage_2 extends PublicMethod {
 	// 获取全部左侧导航
 	public List<WebElement> getNavigation() {
 		List<WebElement> elements = webDriver.findElements(Lis);
-		
+		for (WebElement webElement : elements) {
+			webElement.click();
+		}
 		return null;
 	}
 
