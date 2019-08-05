@@ -9,49 +9,50 @@ import org.openqa.selenium.support.PageFactory;
 import org.xsn.autotest.common.PublicMethod;
 
 public class ModifyPasswordPage extends PublicMethod {
-	
+
 //	@FindBy(css="input")
 //	List<WebElement> list;
 
-	@FindBy(css = "input[type=\"text\"]")
+	@FindBy(xpath = "//form/div[1]//input]")
 	WebElement usernameInput;
-	
-	@FindBy(xpath="/html/body/div/section/section/main/div/div/div[2]/div[1]/form/div[2]/div/div[1]/input")
+
+//	旧密码
+	@FindBy(xpath = "//form/div[2]//input")
 	WebElement passwordOldInput;
-
-	@FindBy(xpath = "/html/body/div/section/section/main/div/div/div[2]/div[1]/form/div[3]/div/div/input")
+//新密码
+	@FindBy(xpath = "//form/div[3]//input")
 	WebElement passwordNewInput1;
-
-	@FindBy(xpath = "/html/body/div/section/section/main/div/div/div[2]/div[1]/form/div[4]/div/div[1]/input")
+//确认新密码
+	@FindBy(xpath = "//form/div[4]//input")
 	WebElement passwordNewInput2;
-
-	@FindBy(xpath = "/html/body/div/section/section/main/div/div/div[2]/div[1]/form/div[5]/div/button[2]")
+//关闭按键
+	@FindBy(xpath = "//button[2]")
 	WebElement cancelButton;
-
-	@FindBy(xpath = "/html/body/div/section/section/main/div/div/div[2]/div[1]/form/div[5]/div/button[1]")
+//确认按键
+	@FindBy(xpath = "//button[1]")
 	WebElement confirmButton;
-
-	@FindBy(xpath = "/html/body/div[1]/section/section/main/div/form/div[3]/div/div[2]")
+//旧密码提示
+	@FindBy(xpath = "//form/div[2]//div[@class='el-form-item__error']")
 	public WebElement oldPasswordTips;
-
-	@FindBy(xpath = "/html/body/div/section/section/main/div/div/div[2]/div[1]/form/div[3]/div/div[2]")
+//新密码提示
+	@FindBy(xpath = "//form/div[3]//div[@class='el-form-item__error']")
 	public WebElement newPasswordFirstTips;
-
-	@FindBy(xpath = "/html/body/div/section/section/main/div/div/div[2]/div[1]/form/div[4]/div/div[2]")
+//确定新密码提示信息
+	@FindBy(xpath = "//form/div[4]//div[@class='el-form-item__error']")
 	public WebElement newPasswordSecondTips;
-	
-	@FindBy(css="div[role=\"alert\"]")
+//alert提示信息
+	@FindBy(css = "div[role='alert']")
 	public WebElement alertMessage;
 
 	public ModifyPasswordPage(WebDriver webDriver) {
 		super.webDriver = webDriver;
 		PageFactory.initElements(webDriver, this);
 	}
-	
+
 	public String getAlertMessage() {
 		return alertMessage.getText();
 	}
-	
+
 	public void setPasswordOldInput(String oldPassword) {
 		passwordOldInput.sendKeys(oldPassword);
 	}
