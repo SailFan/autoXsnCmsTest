@@ -71,7 +71,8 @@ public class TestHomePage {
 		homePage.clickLogoutButton();
 		homePage.myDDwait(10).until(ExpectedConditions.visibilityOf(homePage.confireLoginButton));
 		homePage.confireLogout();
-		Assert.assertEquals(homePage.currentPageUrl(), "http://test.admin.vocy.cn/#/login");
+		homePage.myDDwait(10).until(ExpectedConditions.urlContains("http://test.admin.vocy.cn/#/home"));
+		Assert.assertEquals(homePage.currentPageUrl(), "http://test.admin.vocy.cn/#/home");
 		Reporter.log("测试退出按键");
 	}
 

@@ -23,17 +23,17 @@ public class LoginPage extends PublicMethod {
 	@FindBy(css = "button:nth-of-type(2)")
 	WebElement resetButton;
 
-	@FindBy(css = "div.el-form-item:nth-child(2) > div:nth-child(1) > div:nth-child(2)")
+	@FindBy(xpath = "//form/div[1]/div/div[2]")
 	WebElement usernameTips;
 
-	@FindBy(css = "div.el-form-item:nth-child(3) > div:nth-child(1) > div:nth-child(2)")
+	@FindBy(xpath = "//form/div[2]/div/div[2]")
 	WebElement passwordTips;
 
-	@FindBy(xpath = "/html/body/div/form/div[1]/div/div/input")
+	@FindBy(xpath = "//input[@type='text']")
 
 	WebElement userNameValue;
 
-	@FindBy(css = "div.el-form-item:nth-child(3) > div:nth-child(1) > div:nth-child(1) > input:nth-child(1)")
+	@FindBy(xpath = "//input[@type='password']")
 	WebElement passWordValue;
 
 	@FindBy(css = ".el-message.el-message--error p")

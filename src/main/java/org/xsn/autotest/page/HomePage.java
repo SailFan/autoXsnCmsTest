@@ -17,7 +17,7 @@ public class HomePage extends PublicMethod {
 	WebElement currentUser;
 	
 	
-	@FindBy(css = "#app > section > header > div > div.el-row > div.el-col.el-col-8 > ul > li:nth-child(1) > a")
+	@FindBy(xpath = "//ul/li[1]/a")
 	public WebElement modifyPasswordButton;
 
 	@FindBy(xpath = "/html/body/div[2]/div/div[3]/button[2]")

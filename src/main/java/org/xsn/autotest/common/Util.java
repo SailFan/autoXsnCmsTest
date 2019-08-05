@@ -5,7 +5,9 @@ import java.util.concurrent.TimeUnit;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxOptions;
 
 public class Util {
 
@@ -17,10 +19,14 @@ public class Util {
 		}
 		if (brow.equalsIgnoreCase("Chrome")) {
 			System.setProperty("webdriver.chrome.driver", getDir(brow));
-			brower = new ChromeDriver();
+			ChromeOptions options = new ChromeOptions();
+			options.setHeadless(Boolean.TRUE);
+			brower = new ChromeDriver(options);
 		} else if (brow.equalsIgnoreCase("Firefox")) {
 			System.setProperty("webdriver.firefox.marionette", getDir(brow));
-			brower = new FirefoxDriver();
+			FirefoxOptions options = new FirefoxOptions();
+			options.setHeadless(Boolean.TRUE);
+			brower = new FirefoxDriver(options);
 		}
 		brower.get(getUrl(env));
 		brower.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
