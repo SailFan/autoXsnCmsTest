@@ -13,7 +13,7 @@ public class ModifyPasswordPage extends PublicMethod {
 //	@FindBy(css="input")
 //	List<WebElement> list;
 
-	@FindBy(xpath = "//form/div[2]//input]")
+	@FindBy(xpath = "//form/div[2]//input")
 	WebElement usernameInput;
 
 //	旧密码
@@ -26,19 +26,19 @@ public class ModifyPasswordPage extends PublicMethod {
 	@FindBy(xpath = "//form/div[5]//input")
 	WebElement passwordNewInput2;
 //关闭按键
-	@FindBy(xpath = "//button[2]")
+	@FindBy(css = "button.el-button--default:nth-child(2)")
 	WebElement cancelButton;
 //确认按键
 	@FindBy(css = "button.el-button--primary:nth-child(1)")
 	public WebElement confirmButton;
 //旧密码提示
-	@FindBy(xpath = "//form/div[2]//div[@class='el-form-item__error']")
+	@FindBy(xpath = "//form/div[3]//div[@class='el-form-item__error']")
 	public WebElement oldPasswordTips;
 //新密码提示
-	@FindBy(xpath = "//form/div[3]//div[@class='el-form-item__error']")
+	@FindBy(xpath = "//form/div[4]//div[@class='el-form-item__error']")
 	public WebElement newPasswordFirstTips;
 //确定新密码提示信息
-	@FindBy(css = "form>div[4] div[class='el-form-item__error']")
+	@FindBy(xpath = "//form/div[5]//div[@class='el-form-item__error']")
 	public WebElement newPasswordSecondTips;
 //alert提示信息
 	@FindBy(css = "div[role='alert']")
@@ -80,7 +80,9 @@ public class ModifyPasswordPage extends PublicMethod {
 	 * @return
 	 */
 	public String getUsernameInputValue() {
-		return usernameInput.getAttribute("value");
+		String result =  usernameInput.getAttribute("value");
+		System.out.println(result+"======================");
+		return result;
 	}
 
 	public String getOldPasswordInputValue() {
@@ -115,7 +117,6 @@ public class ModifyPasswordPage extends PublicMethod {
 		this.setPasswordOldInput(oldPassword);
 		this.setNewPasswordFirst(newPassword);
 		this.setNewPasswordSecond(password);
-//		this.clickConfireModifyButton();
 	}
 
 }

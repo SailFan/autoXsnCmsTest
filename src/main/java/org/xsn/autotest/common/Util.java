@@ -21,7 +21,7 @@ public class Util {
 			System.setProperty("webdriver.chrome.driver", getDir(brow));
 			ChromeOptions options = new ChromeOptions();
 			options.setHeadless(Boolean.TRUE);
-			brower = new ChromeDriver();
+			brower = new ChromeDriver(options);
 		} else if (brow.equalsIgnoreCase("Firefox")) {
 			System.setProperty("webdriver.firefox.marionette", getDir(brow));
 			FirefoxOptions options = new FirefoxOptions();
