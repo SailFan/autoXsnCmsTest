@@ -38,7 +38,7 @@ public class ModifyPasswordPage extends PublicMethod {
 	@FindBy(xpath = "//form/div[3]//div[@class='el-form-item__error']")
 	public WebElement newPasswordFirstTips;
 //确定新密码提示信息
-	@FindBy(xpath = "//form/div[4]//div[@class='el-form-item__error']")
+	@FindBy(css = "form>div[4] div[class='el-form-item__error']")
 	public WebElement newPasswordSecondTips;
 //alert提示信息
 	@FindBy(css = "div[role='alert']")
@@ -115,7 +115,7 @@ public class ModifyPasswordPage extends PublicMethod {
 		this.setPasswordOldInput(oldPassword);
 		this.setNewPasswordFirst(newPassword);
 		this.setNewPasswordSecond(password);
-		this.clickConfireModifyButton();
+//		this.clickConfireModifyButton();
 	}
 
 }

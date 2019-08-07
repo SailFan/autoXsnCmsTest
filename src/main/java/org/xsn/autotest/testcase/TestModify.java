@@ -58,6 +58,7 @@ public class TestModify {
 		logger.debug("testModifySuccess method start");
 		modifyPasswordPage.myDDwait(10).until(ExpectedConditions.visibilityOf(modifyPasswordPage.confirmButton));
 		modifyPasswordPage.modifyPassword("1234567", "123456", "123456");
+		modifyPasswordPage.clickConfireModifyButton();
 		Assert.assertEquals(modifyPasswordPage.currentPageUrl(), "http://test.admin.vocy.cn/#/modifypwd",
 				"修改密码返回登录首页成成功");
 		logger.debug("testModifySuccess method end");
@@ -68,9 +69,7 @@ public class TestModify {
 	public void testModifyPasswordEmtpy() {
 		logger.debug("testModifyPasswordEmtpy method start");
 		modifyPasswordPage.refreshPage();
-		modifyPasswordPage.setPasswordOldInput("123456");
-		modifyPasswordPage.setNewPasswordFirst("");
-		modifyPasswordPage.setNewPasswordSecond("");
+		modifyPasswordPage.modifyPassword("123456", "", "");
 		modifyPasswordPage.clickConfireModifyButton();
 		modifyPasswordPage.myDDwait(10).until(ExpectedConditions.visibilityOf(modifyPasswordPage.newPasswordFirstTips));
 		modifyPasswordPage.myDDwait(10)
@@ -85,9 +84,8 @@ public class TestModify {
 	public void testResetButton() {
 		logger.debug("testResetButton method start");
 		modifyPasswordPage.refreshPage();
-		modifyPasswordPage.setPasswordOldInput("123456");
-		modifyPasswordPage.setNewPasswordFirst("12121");
-		modifyPasswordPage.setNewPasswordSecond("asdf");
+		modifyPasswordPage.modifyPassword("123456", "12121", "asdf");
+		modifyPasswordPage.clickConfireModifyButton();
 		modifyPasswordPage.resetInput();
 		Assert.assertEquals("wen", modifyPasswordPage.getUsernameInputValue(), "断言回写名字是否为wen");
 		Assert.assertEquals("", modifyPasswordPage.getOldPasswordInputValue(), "断言旧密码是否被重置");
@@ -101,8 +99,7 @@ public class TestModify {
 	public void testOnlyFirstNewPassword() {
 		logger.debug("testOnlyFirstNewPassword method start");
 		modifyPasswordPage.refreshPage();
-		modifyPasswordPage.setPasswordOldInput("123456");
-		modifyPasswordPage.setNewPasswordFirst("12121");
+		modifyPasswordPage.modifyPassword("123456", "12121", "");
 		modifyPasswordPage.clickConfireModifyButton();
 		Assert.assertEquals("wen", modifyPasswordPage.getUsernameInputValue(), "断言回写名字是否为wen");
 		Assert.assertEquals("请确认新密码", modifyPasswordPage.getNewPasswordSecondTips(), "请确认新密码");
@@ -114,8 +111,7 @@ public class TestModify {
 	public void testOnlySecondNewPassword() {
 		logger.debug("testOnlySecondNewPassword method start");
 		modifyPasswordPage.refreshPage();
-		modifyPasswordPage.setPasswordOldInput("123456");
-		modifyPasswordPage.setNewPasswordSecond("1234567");
+		modifyPasswordPage.modifyPassword("123456", "", "1234567");
 		modifyPasswordPage.clickConfireModifyButton();
 		modifyPasswordPage.myDDwait(10).until(ExpectedConditions.visibilityOf(modifyPasswordPage.newPasswordFirstTips));
 		modifyPasswordPage.myDDwait(10)
@@ -129,9 +125,9 @@ public class TestModify {
 	@Test(groups = { "check" })
 	public void testAtypismNewPassword() {
 		logger.debug("testAtypismNewPassword method start");
-		modifyPasswordPage.setPasswordOldInput("123456");
-		modifyPasswordPage.setNewPasswordSecond("1234567");
-		modifyPasswordPage.setNewPasswordSecond("abcdfe");
+		modifyPasswordPage.refreshPage();
+		modifyPasswordPage.modifyPassword("123456", "1234567", "abcdfe");
+		modifyPasswordPage.clickConfireModifyButton();
 		modifyPasswordPage.myDDwait(10)
 				.until(ExpectedConditions.visibilityOf(modifyPasswordPage.newPasswordSecondTips));
 		Assert.assertEquals("两次输入密码不一致!", modifyPasswordPage.getNewPasswordSecondTips(), "两次输入密码不一致!");
@@ -143,9 +139,7 @@ public class TestModify {
 	public void testErrorOldPassword() {
 		logger.debug("testErrorOldPassword method start");
 		modifyPasswordPage.refreshPage();
-		modifyPasswordPage.setPasswordOldInput("123456789");
-		modifyPasswordPage.setNewPasswordFirst("1234567890");
-		modifyPasswordPage.setNewPasswordSecond("1234567890");
+		modifyPasswordPage.modifyPassword("123456789", "1234567890", "1234567890");
 		modifyPasswordPage.clickConfireModifyButton();
 		modifyPasswordPage.myDDwait(10).until(ExpectedConditions.visibilityOf(modifyPasswordPage.alertMessage));
 		Assert.assertEquals("旧密码验证错误", modifyPasswordPage.getAlertMessage(), "旧密码验证错误");
