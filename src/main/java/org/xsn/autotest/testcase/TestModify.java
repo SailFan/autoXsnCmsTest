@@ -56,10 +56,10 @@ public class TestModify {
 	@Test(groups = { "correct" })
 	public void testModifySuccess() throws InterruptedException {
 		logger.debug("testModifySuccess method start");
-		modifyPasswordPage.modifyPassword("123456", "1234567", "1234567");
-		Assert.assertEquals(modifyPasswordPage.currentPageUrl(), "http://test.admin.vocy.cn/#/modifypwd?active=first",
+		modifyPasswordPage.myDDwait(10).until(ExpectedConditions.visibilityOf(modifyPasswordPage.confirmButton));
+		modifyPasswordPage.modifyPassword("1234567", "123456", "123456");
+		Assert.assertEquals(modifyPasswordPage.currentPageUrl(), "http://test.admin.vocy.cn/#/modifypwd",
 				"修改密码返回登录首页成成功");
-		Thread.sleep(3000);
 		logger.debug("testModifySuccess method end");
 		Reporter.log("修改密碼成功");
 	}
@@ -71,7 +71,7 @@ public class TestModify {
 		modifyPasswordPage.setPasswordOldInput("123456");
 		modifyPasswordPage.setNewPasswordFirst("");
 		modifyPasswordPage.setNewPasswordSecond("");
-		modifyPasswordPage.clickLoginButton();
+		modifyPasswordPage.clickConfireModifyButton();
 		modifyPasswordPage.myDDwait(10).until(ExpectedConditions.visibilityOf(modifyPasswordPage.newPasswordFirstTips));
 		modifyPasswordPage.myDDwait(10)
 				.until(ExpectedConditions.visibilityOf(modifyPasswordPage.newPasswordSecondTips));
@@ -103,7 +103,7 @@ public class TestModify {
 		modifyPasswordPage.refreshPage();
 		modifyPasswordPage.setPasswordOldInput("123456");
 		modifyPasswordPage.setNewPasswordFirst("12121");
-		modifyPasswordPage.clickLoginButton();
+		modifyPasswordPage.clickConfireModifyButton();
 		Assert.assertEquals("wen", modifyPasswordPage.getUsernameInputValue(), "断言回写名字是否为wen");
 		Assert.assertEquals("请确认新密码", modifyPasswordPage.getNewPasswordSecondTips(), "请确认新密码");
 		logger.debug("testOnlyFirstNewPassword method end");
@@ -116,7 +116,7 @@ public class TestModify {
 		modifyPasswordPage.refreshPage();
 		modifyPasswordPage.setPasswordOldInput("123456");
 		modifyPasswordPage.setNewPasswordSecond("1234567");
-		modifyPasswordPage.clickLoginButton();
+		modifyPasswordPage.clickConfireModifyButton();
 		modifyPasswordPage.myDDwait(10).until(ExpectedConditions.visibilityOf(modifyPasswordPage.newPasswordFirstTips));
 		modifyPasswordPage.myDDwait(10)
 				.until(ExpectedConditions.visibilityOf(modifyPasswordPage.newPasswordSecondTips));
@@ -146,7 +146,7 @@ public class TestModify {
 		modifyPasswordPage.setPasswordOldInput("123456789");
 		modifyPasswordPage.setNewPasswordFirst("1234567890");
 		modifyPasswordPage.setNewPasswordSecond("1234567890");
-		modifyPasswordPage.clickLoginButton();
+		modifyPasswordPage.clickConfireModifyButton();
 		modifyPasswordPage.myDDwait(10).until(ExpectedConditions.visibilityOf(modifyPasswordPage.alertMessage));
 		Assert.assertEquals("旧密码验证错误", modifyPasswordPage.getAlertMessage(), "旧密码验证错误");
 		logger.debug("testErrorOldPassword method end");

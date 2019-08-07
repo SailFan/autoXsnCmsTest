@@ -13,24 +13,24 @@ public class ModifyPasswordPage extends PublicMethod {
 //	@FindBy(css="input")
 //	List<WebElement> list;
 
-	@FindBy(xpath = "//form/div[1]//input]")
+	@FindBy(xpath = "//form/div[2]//input]")
 	WebElement usernameInput;
 
 //	旧密码
-	@FindBy(xpath = "//form/div[2]//input")
+	@FindBy(xpath = "//form/div[3]//input")
 	WebElement passwordOldInput;
 //新密码
-	@FindBy(xpath = "//form/div[3]//input")
+	@FindBy(xpath = "//form/div[4]//input")
 	WebElement passwordNewInput1;
 //确认新密码
-	@FindBy(xpath = "//form/div[4]//input")
+	@FindBy(xpath = "//form/div[5]//input")
 	WebElement passwordNewInput2;
 //关闭按键
 	@FindBy(xpath = "//button[2]")
 	WebElement cancelButton;
 //确认按键
-	@FindBy(xpath = "//button[1]")
-	WebElement confirmButton;
+	@FindBy(css = "button.el-button--primary:nth-child(1)")
+	public WebElement confirmButton;
 //旧密码提示
 	@FindBy(xpath = "//form/div[2]//div[@class='el-form-item__error']")
 	public WebElement oldPasswordTips;
@@ -65,7 +65,7 @@ public class ModifyPasswordPage extends PublicMethod {
 		passwordNewInput2.sendKeys(password);
 	}
 
-	public void clickLoginButton() {
+	public void clickConfireModifyButton() {
 		confirmButton.click();
 	}
 
@@ -115,7 +115,7 @@ public class ModifyPasswordPage extends PublicMethod {
 		this.setPasswordOldInput(oldPassword);
 		this.setNewPasswordFirst(newPassword);
 		this.setNewPasswordSecond(password);
-		this.clickLoginButton();
+		this.clickConfireModifyButton();
 	}
 
 }

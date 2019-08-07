@@ -1,5 +1,6 @@
 package org.xsn.autotest.page;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
@@ -9,7 +10,7 @@ import org.testng.annotations.Factory;
 import org.xsn.autotest.common.PublicMethod;
 
 public class HomePage extends PublicMethod {
-	
+	private static final Logger logger = Logger.getLogger(HomePage.class);
 	@FindBy(partialLinkText = "退出")
 	WebElement logoutButton;
 	
@@ -22,7 +23,7 @@ public class HomePage extends PublicMethod {
 //	@FindBy(partialLinkText = "修改密码")
 	public WebElement modifyPasswordButton;
 
-	@FindBy(xpath = "/html/body/div[2]/div/div[3]/button[2]")
+	@FindBy(xpath = "/html/body/div/section/section/main/div/form/div[6]/div/button[1]")
 	public WebElement confireLoginButton;
 
 	@FindBy(xpath = "/html/body/div[2]/div/div[3]/button[1]")
