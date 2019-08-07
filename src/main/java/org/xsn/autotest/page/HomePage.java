@@ -18,6 +18,8 @@ public class HomePage extends PublicMethod {
 	
 	
 	@FindBy(xpath = "//ul/li[1]/a")
+//	@FindBy(xpath="/html/body/div/section/header/div/div[1]/div[2]/ul/li[1]/a")
+//	@FindBy(partialLinkText = "修改密码")
 	public WebElement modifyPasswordButton;
 
 	@FindBy(xpath = "/html/body/div[2]/div/div[3]/button[2]")
@@ -36,7 +38,7 @@ public class HomePage extends PublicMethod {
 	}
 
 	public void clickModifyButton() {
-		modifyPasswordButton.click();
+		this.modifyPasswordButton.click();
 	}
 	
 	

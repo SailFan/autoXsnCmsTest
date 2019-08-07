@@ -28,11 +28,10 @@ public class TestModify {
 		modifyPasswordPage = new ModifyPasswordPage(brower);
 		loginpage = new LoginPage(brower);
 		homePage = new HomePage(brower);
-		loginpage.loginToXsn("wen", "1234567");
+		loginpage.loginToXsn("wen", "123456");
 		homePage.myDDwait(10).until(ExpectedConditions.visibilityOf(homePage.modifyPasswordButton));
 		homePage.clickModifyButton();
 		modifyPasswordPage.refreshPage();
-//		modifyPasswordPag
 	}
 	
 	@org.testng.annotations.AfterClass
