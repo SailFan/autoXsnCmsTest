@@ -1,6 +1,5 @@
 package org.xsn.autotest.page;
 
-import java.util.Iterator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -22,7 +21,10 @@ public class HomePage_2 extends PublicMethod {
 	public By nRLBLi = By.xpath("/html/body/div[1]/section/section/aside/ul/li[1]/ul/li/ul/li[2]");
 
 	public By secondLevel = By.cssSelector("li[tabindex=\"-1\"]");
-
+	
+	By navList = By.xpath("//ul/li[@role=\"menuitem\"]");
+	
+	
 //	public HomePage_2() {
 //		brower = Util.openBrower("chrome", null);
 //		super.webDriver = brower;

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd" >
+<suite name="login">
+	<test name="testlogin">
+		<groups>
+			<run>
+				<include name="open.*"></include>
+			</run>
+		</groups>
+		<classes>
+			<class name="org.xsn.autotest.testcase.TestHomePage"></class>
+		</classes>
+	</test>
+</suite>
+
+
+

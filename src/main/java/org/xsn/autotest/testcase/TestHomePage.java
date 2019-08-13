@@ -16,12 +16,13 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Ignore;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.xsn.autotest.common.Util;
 import org.xsn.autotest.page.HomePage;
 import org.xsn.autotest.page.HomePage_2;
 import org.xsn.autotest.page.LoginPage;
-
+@Listeners({org.xsn.autotest.common.listeners.OpenNavListener.class})
 public class TestHomePage {
 	private final static Logger logger = Logger.getLogger(TestHomePage.class);
 	private WebDriver brower;
@@ -29,7 +30,7 @@ public class TestHomePage {
 	private HomePage homePage;
 	HomePage_2 page_2;
 
-	@BeforeClass(groups = { "check", "open_page" })
+	@BeforeClass(groups = { "check", "open.*" })
 	public void setUp() {
 		brower = Util.openBrower("chrome", null);
 		loginPage = new LoginPage(brower);
@@ -76,24 +77,6 @@ public class TestHomePage {
 		Reporter.log("测试退出按键");
 	}
 
-	@Test(groups = { "check" })
-	public void testOpenNavigation() {
-		logger.debug("打开左侧导航栏");
-		brower.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-		List<WebElement> list = page_2.getNavigation();
-		for (WebElement webElement : list) {
-			webElement.click();
-		}
-//		List<WebElement> elements = brower.findElements(page_2.secondLevel);
-//		for (WebElement webElement : elements) {
-//			if(ExpectedConditions.visibilityOf(webElement)=null) {
-//				System.out.println("");
-//			}
-//		}
-//		System.out.println(elements.size());
-		Reporter.log("测试打开左侧导航");
-	}
-
 //	@Test(dependsOnMethods = "testOpenNavigation", groups = {"check"})
 //	@Ignore
 //	public void testCloseNavigation() {
@@ -106,9 +89,17 @@ public class TestHomePage {
 //		WebElement element = brower.findElement(page_2.dSHWZLi);
 //		Reporter.log("测试关闭左侧导航");
 //	}
-
+	
+	//打開全部以及菜单
+	@Test
+	void f() {
+		
+	}
+	
+	
+	
 	// 待审核列表
-	@Test(groups = { "check", "open_list_to_be_audited" }, dependsOnMethods = { "testOpenNavigation" })
+	@Test(groups = {"open_list_to_be_audited" })
 	public void testClickSecondLevelListtoBeAudited() {
 		logger.debug("打开待审核文章列表页面测试用例开始执行");
 		List<WebElement> elements = brower.findElements(page_2.secondLevel);
@@ -123,7 +114,7 @@ public class TestHomePage {
 	}
 
 	// 内容列表
-	@Test(groups = { "check", "open_content_list" }, dependsOnMethods = { "testOpenNavigation" })
+	@Test(groups = {"open_content_list" })
 	public void testClickSecondLevelcontentList() {
 		logger.debug("打开内容列表测试用例开始执行");
 		List<WebElement> elements = brower.findElements(page_2.secondLevel);
@@ -138,7 +129,7 @@ public class TestHomePage {
 	}
 
 	// 内容推荐
-	@Test(groups = { "check", "open_content_recommendation" }, dependsOnMethods = { "testOpenNavigation" })
+	@Test(groups = {"open_content_recommendation" })
 	public void testClickSecondLevelcontentListContentRecommendation() {
 		List<WebElement> elements = brower.findElements(page_2.secondLevel);
 		for (int i = 0; i < elements.size(); i++) {
@@ -149,8 +140,7 @@ public class TestHomePage {
 	}
 
 	// 轮播图推荐
-	@Test(groups = { "check", "open_recommendation_of_rotary_planting_map" }, dependsOnMethods = {
-			"testOpenNavigation" })
+	@Test(groups = {"open_recommendation_of_rotary_planting_map" })
 	public void testClickSecondLevelRecommendationOfRotaryPlantingMap() {
 		List<WebElement> elements = brower.findElements(page_2.secondLevel);
 		for (int i = 0; i < elements.size(); i++) {
@@ -161,7 +151,7 @@ public class TestHomePage {
 	}
 
 	// 热文章推荐
-	@Test(groups = { "check", "open_hot_article_recommendation" }, dependsOnMethods = { "testOpenNavigation" })
+	@Test(groups = {"open_hot_article_recommendation" })
 	public void testClickSecondLevelHotArticleRecommendation() {
 		List<WebElement> elements = brower.findElements(page_2.secondLevel);
 		for (int i = 0; i < elements.size(); i++) {
@@ -172,7 +162,7 @@ public class TestHomePage {
 	}
 
 	// 热话题推荐
-	@Test(groups = { "check", "open_hot_topic_recommendation" }, dependsOnMethods = { "testOpenNavigation" })
+	@Test(groups = {"open_hot_topic_recommendation" })
 	public void testClickSecondLevelHotTopicRecommendation() {
 		List<WebElement> elements = brower.findElements(page_2.secondLevel);
 		for (int i = 0; i < elements.size(); i++) {
@@ -183,8 +173,7 @@ public class TestHomePage {
 	}
 
 	// 热校圈推荐
-	@Test(groups = { "check", "open_recommendation_of_hot_calibration_circle" }, dependsOnMethods = {
-			"testOpenNavigation" })
+	@Test(groups = {"open_recommendation_of_hot_calibration_circle" })
 	public void testClickSecondLevelRecommendationOfHotCalibrationCircle() {
 		List<WebElement> elements = brower.findElements(page_2.secondLevel);
 		for (int i = 0; i < elements.size(); i++) {
@@ -195,7 +184,7 @@ public class TestHomePage {
 	}
 
 	// 名师工作室推荐
-	@Test(groups = { "check", "open_teaching_studio" }, dependsOnMethods = { "testOpenNavigation" })
+	@Test(groups = {"open_teaching_studio" })
 	public void testClickSecondLevelTeachingStudio() {
 		List<WebElement> elements = brower.findElements(page_2.secondLevel);
 		for (int i = 0; i < elements.size(); i++) {
@@ -206,7 +195,7 @@ public class TestHomePage {
 	}
 
 	// 推荐小记者
-	@Test(groups = { "check", "open_recommendation_by_Little_journalist" }, dependsOnMethods = { "testOpenNavigation" })
+	@Test(groups = {"open_recommendation_by_Little_journalist" })
 	public void testClickSecondLevelRecommendationByLittleJournalist() {
 		List<WebElement> elements = brower.findElements(page_2.secondLevel);
 		for (int i = 0; i < elements.size(); i++) {
@@ -217,7 +206,7 @@ public class TestHomePage {
 	}
 
 	// 待审核新建学校列表
-	@Test(groups = { "check", "open_new_schools_to_be_audited" }, dependsOnMethods = { "testOpenNavigation" })
+	@Test(groups = {"open_new_schools_to_be_audited" })
 	public void testClickSecondLevelNewSchoolsToBeAudited() {
 		List<WebElement> elements = brower.findElements(page_2.secondLevel);
 		for (int i = 0; i < elements.size(); i++) {
@@ -228,7 +217,7 @@ public class TestHomePage {
 	}
 
 	// 学校列表
-	@Test(groups = { "check", "open_schools_List" }, dependsOnMethods = { "testOpenNavigation" })
+	@Test(groups = {"open_schools_List" })
 	public void testClickSecondLevelSchoolsList() {
 		List<WebElement> elements = brower.findElements(page_2.secondLevel);
 		for (int i = 0; i < elements.size(); i++) {
@@ -239,7 +228,7 @@ public class TestHomePage {
 	}
 
 	// 名师工作室列表
-	@Test(groups = { "check", "open_list_of_famous_teachers_studios" }, dependsOnMethods = { "testOpenNavigation" })
+	@Test(groups = {"open_list_of_famous_teachers_studios" })
 	public void testClickSecondLevelListOfFamousTeachersStudios() {
 		List<WebElement> elements = brower.findElements(page_2.secondLevel);
 		for (int i = 0; i < elements.size(); i++) {
@@ -250,7 +239,7 @@ public class TestHomePage {
 	}
 
 	// 话题列表
-	@Test(groups = { "check", "open_topic_list" }, dependsOnMethods = { "testOpenNavigation" })
+	@Test(groups = {"open_topic_list" })
 	public void testClickSecondLevelTopicList() {
 		List<WebElement> elements = brower.findElements(page_2.secondLevel);
 		for (int i = 0; i < elements.size(); i++) {
@@ -261,7 +250,7 @@ public class TestHomePage {
 	}
 
 	// 专题列表
-	@Test(groups = { "check", "open_list_of_topics" }, dependsOnMethods = { "testOpenNavigation" })
+	@Test(groups = {"open_list_of_topics" })
 	public void testClickSecondLevelListOfTopics() {
 		List<WebElement> elements = brower.findElements(page_2.secondLevel);
 		for (int i = 0; i < elements.size(); i++) {
@@ -272,7 +261,7 @@ public class TestHomePage {
 	}
 
 	// 小程序
-	@Test(groups = { "check", "open_small_procedures" }, dependsOnMethods = { "testOpenNavigation" })
+	@Test(groups = {"open_small_procedures" })
 	public void testClickSecondLevelSmallProcedures() {
 		List<WebElement> elements = brower.findElements(page_2.secondLevel);
 		for (int i = 0; i < elements.size(); i++) {
@@ -283,7 +272,7 @@ public class TestHomePage {
 	}
 
 	// 站点管理
-	@Test(groups = { "check", "open_site_management" }, dependsOnMethods = { "testOpenNavigation" })
+	@Test(groups = {"open_site_management" })
 	public void testClickSecondLevelSiteManagement() {
 		List<WebElement> elements = brower.findElements(page_2.secondLevel);
 		for (int i = 0; i < elements.size(); i++) {
@@ -294,7 +283,7 @@ public class TestHomePage {
 	}
 
 	// 内容频道管理
-	@Test(groups = { "check", "open_content_channel_management" }, dependsOnMethods = { "testOpenNavigation" })
+	@Test(groups = {"open_content_channel_management" })
 	public void testClickSecondLevelContentChannelManagement() {
 		List<WebElement> elements = brower.findElements(page_2.secondLevel);
 		for (int i = 0; i < elements.size(); i++) {
@@ -305,8 +294,7 @@ public class TestHomePage {
 	}
 
 	// 系统内容分类管理
-	@Test(groups = { "check", "open_system_content_classification_management" }, dependsOnMethods = {
-			"testOpenNavigation" })
+	@Test(groups = {"open_system_content_classification_management" })
 	public void testClickSecondLevelSystemContentClassificationManagement() {
 		List<WebElement> elements = brower.findElements(page_2.secondLevel);
 		for (int i = 0; i < elements.size(); i++) {
@@ -317,7 +305,7 @@ public class TestHomePage {
 	}
 
 	// 角色管理
-	@Test(groups = { "check", "open_role_management" }, dependsOnMethods = { "testOpenNavigation" })
+	@Test(groups = {"open_role_management" })
 	public void testClickSecondLevelRole_Management() {
 		List<WebElement> elements = brower.findElements(page_2.secondLevel);
 		for (int i = 0; i < elements.size(); i++) {
@@ -328,7 +316,7 @@ public class TestHomePage {
 	}
 
 	// 用户管理
-	@Test(groups = { "check", "open_user_management" }, dependsOnMethods = { "testOpenNavigation" })
+	@Test(groups = {"open_user_management" })
 	public void testClickSecondLevelUserManagement() {
 		List<WebElement> elements = brower.findElements(page_2.secondLevel);
 		for (int i = 0; i < elements.size(); i++) {
