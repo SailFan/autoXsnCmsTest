@@ -92,8 +92,11 @@ public class TestHomePage {
 	
 	//打開全部以及菜单
 	@Test
-	void f() {
-		
+	void openFirstStageNav() {
+		List<WebElement> list= page_2.getFirstStageNav();
+		for (WebElement webElement : list) {
+			webElement.click();
+		}
 	}
 	
 	

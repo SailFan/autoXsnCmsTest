@@ -24,19 +24,18 @@ public class HomePage_2 extends PublicMethod {
 	
 	By navList = By.xpath("//ul/li[@role=\"menuitem\"]");
 	
-	
-//	public HomePage_2() {
-//		brower = Util.openBrower("chrome", null);
-//		super.webDriver = brower;
-//	}
+	By navFirst = By.xpath("//aside/ul/li");
+
 
 	// 获取全部左侧导航
 	public List<WebElement> getNavigation() {
-		List<WebElement> elements = webDriver.findElements(Lis);
-		for (WebElement webElement : elements) {
-			webElement.click();
-		}
-		return null;
+		List<WebElement> elements = webDriver.findElements(navList);
+		return elements;
 	}
-
+	
+//	获取二级导航菜单
+	public List<WebElement> getFirstStageNav(){
+		List<WebElement> list = webDriver.findElements(this.navFirst);
+		return list;
+	}
 }

@@ -1,3 +1,4 @@
+
 package org.xsn.autotest.page;
 
 import org.apache.log4j.Logger;
@@ -19,8 +20,7 @@ public class HomePage extends PublicMethod {
 	
 	
 	@FindBy(xpath = "//ul/li[1]/a")
-//	@FindBy(xpath="/html/body/div/section/header/div/div[1]/div[2]/ul/li[1]/a")
-//	@FindBy(partialLinkText = "修改密码")
+
 	public WebElement modifyPasswordButton;
 
 	@FindBy(xpath = "/html/body/div/section/section/main/div/form/div[6]/div/button[1]")
