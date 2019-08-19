@@ -91,7 +91,7 @@ public class TestHomePage {
 //	}
 	
 	//打開全部以及菜单
-	@Test
+	@Test(groups = {"open_first_stage_nav"})
 	void openFirstStageNav() {
 		List<WebElement> list= page_2.getFirstStageNav();
 		for (WebElement webElement : list) {
@@ -100,17 +100,12 @@ public class TestHomePage {
 	}
 	
 	
-	
+/***	
 	// 待审核列表
 	@Test(groups = {"open_list_to_be_audited" })
 	public void testClickSecondLevelListtoBeAudited() {
 		logger.debug("打开待审核文章列表页面测试用例开始执行");
-		List<WebElement> elements = brower.findElements(page_2.secondLevel);
-		for (int i = 0; i < elements.size(); i++) {
-			if (i == 0) {
-				elements.get(i).click();
-			}
-		}
+		
 		new WebDriverWait(brower, 10).until(ExpectedConditions.titleContains("内容审核列表"));
 		Assert.assertEquals("运营后台内容审核列表", brower.getTitle());
 		Reporter.log("打开待审核文章列表页面");
@@ -120,14 +115,7 @@ public class TestHomePage {
 	@Test(groups = {"open_content_list" })
 	public void testClickSecondLevelcontentList() {
 		logger.debug("打开内容列表测试用例开始执行");
-		List<WebElement> elements = brower.findElements(page_2.secondLevel);
-		for (int i = 0; i < elements.size(); i++) {
-			if (i == 1) {
-				elements.get(i).click();
-			}
 		}
-		new WebDriverWait(brower, 10).until(ExpectedConditions.titleContains("管理列表"));
-		Assert.assertEquals("运营后台内容管理列表", brower.getTitle());
 		Reporter.log("测试内容管理列表打开");
 	}
 
@@ -328,5 +316,6 @@ public class TestHomePage {
 			}
 		}
 	}
+	*/
 
 }
