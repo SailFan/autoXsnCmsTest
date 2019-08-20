@@ -100,17 +100,16 @@ public class TestHomePage {
 	}
 	
 	
-/***	
-	// 待审核列表
+
+	// 待审核列表页面
 	@Test(groups = {"open_list_to_be_audited" })
 	public void testClickSecondLevelListtoBeAudited() {
-		logger.debug("打开待审核文章列表页面测试用例开始执行");
-		
+//		page_2.toAuditList;
 		new WebDriverWait(brower, 10).until(ExpectedConditions.titleContains("内容审核列表"));
 		Assert.assertEquals("运营后台内容审核列表", brower.getTitle());
 		Reporter.log("打开待审核文章列表页面");
 	}
-
+	/***	
 	// 内容列表
 	@Test(groups = {"open_content_list" })
 	public void testClickSecondLevelcontentList() {

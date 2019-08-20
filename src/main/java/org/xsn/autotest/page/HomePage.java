@@ -14,11 +14,10 @@ public class HomePage extends PublicMethod {
 	private static final Logger logger = Logger.getLogger(HomePage.class);
 	@FindBy(partialLinkText = "退出")
 	WebElement logoutButton;
-	
-	@FindBy(css=".header-right li:nth-of-type(4)")
+
+	@FindBy(css = ".header-right li:nth-of-type(4)")
 	WebElement currentUser;
-	
-	
+
 	@FindBy(xpath = "//ul/li[1]/a")
 
 	public WebElement modifyPasswordButton;
@@ -28,7 +27,14 @@ public class HomePage extends PublicMethod {
 
 	@FindBy(xpath = "/html/body/div[2]/div/div[3]/button[1]")
 	WebElement resetLoginButton;
-
+	
+//	待审核列表
+	@FindBy(xpath="//aside/ul/li[1]/ul/li/ul/li[1]")
+	public WebElement navFirst;
+//	内容列表
+	@FindBy(xpath = "//aside/ul/li[1]/ul/li/ul/li[2]")
+	public WebElement contentList;
+	
 	public HomePage(WebDriver webDriver) {
 		super.webDriver = webDriver;
 		PageFactory.initElements(webDriver, this);
@@ -41,13 +47,12 @@ public class HomePage extends PublicMethod {
 	public void clickModifyButton() {
 		this.modifyPasswordButton.click();
 	}
-	
-	
+
 	public void confireLogout() {
 		confireLoginButton.click();
 	}
-	
+
 	public void resetLogout() {
 		resetLoginButton.click();
-	} 
+	}
 }

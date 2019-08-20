@@ -20,52 +20,53 @@ public class HomePage_2 extends PublicMethod {
 //	二级菜单
 	public By navSecond = By.cssSelector("li[tabindex=\"-1\"]");
 //一级菜单
-	By navFirst = By.xpath("//aside/ul/li");
+	public By navFirst = By.xpath("//aside/ul/li");
 	// 待审核列表
-	By toAuditList = By.xpath("//aside/ul/li[1]/ul/li/ul/li[1]");
+	public By toAuditList = By.xpath("//aside/ul/li[1]/ul/li/ul/li[1]");
 	// 内容列表
-	By contentList = By.xpath("//aside/ul/li[1]/ul/li/ul/li[2]");
+	public By contentList = By.xpath("//aside/ul/li[1]/ul/li/ul/li[2]");
 	// 内容推荐
-	By contentRecommendation = By.xpath("//aside/ul/li[2]/ul/li/ul/li[1]");
+	public By contentRecommendation = By.xpath("//aside/ul/li[2]/ul/li/ul/li[1]");
 	// 轮播图管理
-	By slideShow = By.xpath("//aside/ul/li[2]/ul/li/ul/li[2]");
+	public By slideShow = By.xpath("//aside/ul/li[2]/ul/li/ul/li[2]");
 	// 热文章推荐
-	By hotArtcle = By.xpath("//aside/ul/li[2]/ul/li/ul/li[3]");
+	public By hotArtcle = By.xpath("//aside/ul/li[2]/ul/li/ul/li[3]");
 	// 热话题推荐
-	By hotTopic = By.xpath("//aside/ul/li[2]/ul/li/ul/li[4]");
+	public By hotTopic = By.xpath("//aside/ul/li[2]/ul/li/ul/li[4]");
 	// 热校区推荐
-	By hotSchool = By.xpath("//aside/ul/li[2]/ul/li/ul/li[5]");
+	public By hotSchool = By.xpath("//aside/ul/li[2]/ul/li/ul/li[5]");
 	// 名师工作室
-	By masterStudio = By.xpath("//aside/ul/li[2]/ul/li/ul/li[6]");
+	public By masterStudio = By.xpath("//aside/ul/li[2]/ul/li/ul/li[6]");
 //	小记者推荐
-	By youngReporter = By.xpath("//aside/ul/li[3]/ul/li/ul/li[1]");
+	public By youngReporter = By.xpath("//aside/ul/li[3]/ul/li/ul/li[1]");
 //	待审核新建学校列表
-	By SchoolToBeAudited = By.xpath("//aside/ul/li[3]/ul/li/ul/li[1]");
+	public By SchoolToBeAudited = By.xpath("//aside/ul/li[3]/ul/li/ul/li[1]");
 //	学校列表
-	By schoolList = By.xpath("//aside/ul/li[3]/ul/li/ul/li[2]");
+	public By schoolList = By.xpath("//aside/ul/li[3]/ul/li/ul/li[2]");
 //	公众号列表
-	By officialAccounts = By.xpath("//aside/ul/li[3]/ul/li/ul/li[3]");
+	public By officialAccounts = By.xpath("//aside/ul/li[3]/ul/li/ul/li[3]");
 //	名师工作室
-	By masterStudioList = By.xpath("//aside/ul/li[4]/ul/li/ul/li");
+	public By masterStudioList = By.xpath("//aside/ul/li[4]/ul/li/ul/li");
 //	话题列表
-	By topicList = By.xpath("//aside/ul/li[5]/ul/li/ul/li");
+	public By topicList = By.xpath("//aside/ul/li[5]/ul/li/ul/li");
 //	专题列表
-	By specialList = By.xpath("//aside/ul/li[6]/ul/li/ul/li[1]");
+	public By specialList = By.xpath("//aside/ul/li[6]/ul/li/ul/li[1]");
 //	小程序列表
-	By miniProgram = By.xpath("//aside/ul/li[6]/ul/li/ul/li[2]");
+	public By miniProgram = By.xpath("//aside/ul/li[6]/ul/li/ul/li[2]");
 	// 专辑列表
-	By albumList = By.xpath("//aside/ul/li[7]/ul/li/ul/li");
+	public By albumList = By.xpath("//aside/ul/li[7]/ul/li/ul/li");
 //	站点管理
-	By siteManage = By.xpath("//aside/ul/li[8]/ul/li/ul/li[1]");
+	public By siteManage = By.xpath("//aside/ul/li[8]/ul/li/ul/li[1]");
 //	内容频道管理
-	By ContentOfTheChannelManage = By.xpath("//aside/ul/li[8]/ul/li/ul/li[2]");
+	public By ContentOfTheChannelManage = By.xpath("//aside/ul/li[8]/ul/li/ul/li[2]");
 //	系统内容分类
-	By SystemContentClassification = By.xpath("//aside/ul/li[8]/ul/li/ul/li[3]");
+	public By SystemContentClassification = By.xpath("//aside/ul/li[8]/ul/li/ul/li[3]");
 //	角色管理
-	By roleManage = By.xpath("//aside/ul/li[8]/ul/li/ul/li[4]");
+	public By roleManage = By.xpath("//aside/ul/li[8]/ul/li/ul/li[4]");
 //	用户管理
-	By userManage = By.xpath("//aside/ul/li[8]/ul/li/ul/li[5]");
-
+	public By userManage = By.xpath("//aside/ul/li[8]/ul/li/ul/li[5]");
+	
+	
 	// 获取全部二级导航菜单
 	public List<WebElement> getNavigation() {
 		List<WebElement> elements = webDriver.findElements(navSecond);
