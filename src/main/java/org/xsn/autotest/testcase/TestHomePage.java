@@ -22,7 +22,8 @@ import org.xsn.autotest.common.Util;
 import org.xsn.autotest.page.HomePage;
 import org.xsn.autotest.page.HomePage_2;
 import org.xsn.autotest.page.LoginPage;
-@Listeners({org.xsn.autotest.common.listeners.OpenNavListener.class})
+
+@Listeners({ org.xsn.autotest.common.listeners.OpenNavListener.class })
 public class TestHomePage {
 	private final static Logger logger = Logger.getLogger(TestHomePage.class);
 	private WebDriver brower;
@@ -39,13 +40,14 @@ public class TestHomePage {
 		loginPage.loginToXsn("admin", "123456");
 	}
 
-	@AfterClass(groups = { "check", "open_page" })
+	@AfterClass(groups = { "check", "open.*" })
 	public void afterClass() {
-		brower.close();
+//		brower.close();
 	}
 
 	@BeforeMethod(groups = { "correct" })
 	public void beforeMethod() {
+		logger.debug("zhixingle");
 		brower = Util.openBrower("chrome", null);
 		loginPage = new LoginPage(brower);
 		homePage = new HomePage(brower);
@@ -58,6 +60,7 @@ public class TestHomePage {
 	}
 
 	@Test(groups = { "correct" })
+	@Ignore
 	public void testOpenModifyPageSuccess() {
 		homePage.myDDwait(10).until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("修改密码")));
 		homePage.clickModifyButton();
@@ -67,6 +70,7 @@ public class TestHomePage {
 	}
 
 	@Test(groups = { "correct" })
+	@Ignore
 	public void testLoginout() {
 		homePage.myDDwait(10).until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("退出")));
 		homePage.clickLogoutButton();
@@ -77,244 +81,165 @@ public class TestHomePage {
 		Reporter.log("测试退出按键");
 	}
 
-//	@Test(dependsOnMethods = "testOpenNavigation", groups = {"check"})
-//	@Ignore
-//	public void testCloseNavigation() {
-//		logger.debug("全部关闭左侧导航栏");
-//		brower.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
-//		List<WebElement> list = page_2.getNavigation();
-//		for (WebElement webElement : list) {
-//			webElement.click();
-//		}
-//		WebElement element = brower.findElement(page_2.dSHWZLi);
-//		Reporter.log("测试关闭左侧导航");
-//	}
-	
-	//打開全部以及菜单
-	@Test(groups = {"open_first_stage_nav"})
-	void openFirstStageNav() {
-		List<WebElement> list= page_2.getFirstStageNav();
-		for (WebElement webElement : list) {
+	@Test(groups = { "open_first_level_nav" })
+	void testOPenAll() throws InterruptedException {
+		List<WebElement> nav = page_2.getFirstStageNav();
+		for (WebElement webElement : nav) {
+			Thread.sleep(3);
 			webElement.click();
 		}
 	}
-	
-	
 
 	// 待审核列表页面
-	@Test(groups = {"open_list_to_be_audited" })
-	public void testClickSecondLevelListtoBeAudited() {
-//		page_2.toAuditList;
-		new WebDriverWait(brower, 10).until(ExpectedConditions.titleContains("内容审核列表"));
-		Assert.assertEquals("运营后台内容审核列表", brower.getTitle());
-		Reporter.log("打开待审核文章列表页面");
+	@Test(groups = { "open_list_to_be_audited" }, dependsOnMethods = { "testOPenAll" })
+	public void testClicktoBeAuditedList() {
+		WebElement toBeAudited = page_2.getToAuditList();
+		toBeAudited.click();
+		Assert.assertEquals("运营后台内容审核列表", page_2.currentPageTitle());
+		Reporter.log("内容审核列表测试通过");
 	}
-	/***	
+
 	// 内容列表
-	@Test(groups = {"open_content_list" })
+	@Test(groups = { "open_content_list" }, dependsOnMethods = { "testOPenAll" })
 	public void testClickSecondLevelcontentList() {
-		logger.debug("打开内容列表测试用例开始执行");
-		}
-		Reporter.log("测试内容管理列表打开");
+		WebElement element = page_2.getContentList();
+		element.click();
+		Assert.assertEquals("运营后台内容管理列表", page_2.currentPageTitle());
+		Reporter.log("运营后台内容管理列表测试通过");
 	}
 
 	// 内容推荐
-	@Test(groups = {"open_content_recommendation" })
+	@Test(groups = { "open_content_recommendation" }, dependsOnMethods = { "testOPenAll" })
 	public void testClickSecondLevelcontentListContentRecommendation() {
-		List<WebElement> elements = brower.findElements(page_2.secondLevel);
-		for (int i = 0; i < elements.size(); i++) {
-			if (i == 2) {
-				elements.get(i).click();
-			}
-		}
+		WebElement webElement = page_2.getContentRecommendation();
+		webElement.click();
+		Assert.assertEquals("运营后台内容推荐列表", page_2.currentPageTitle());
+		Reporter.log("运营后台内容推荐列表测试通过");
 	}
 
 	// 轮播图推荐
-	@Test(groups = {"open_recommendation_of_rotary_planting_map" })
+	@Test(groups = { "open_recommendation_of_rotary_planting_map" }, dependsOnMethods = { "testOPenAll" })
 	public void testClickSecondLevelRecommendationOfRotaryPlantingMap() {
-		List<WebElement> elements = brower.findElements(page_2.secondLevel);
-		for (int i = 0; i < elements.size(); i++) {
-			if (i == 3) {
-				elements.get(i).click();
-			}
-		}
+		WebElement slideShow = page_2.getSlideShow();
+		slideShow.click();
+		Assert.assertEquals("运营后台轮播图推荐列表", page_2.currentPageTitle());
 	}
 
 	// 热文章推荐
-	@Test(groups = {"open_hot_article_recommendation" })
+	@Test(groups = { "open_hot_article_recommendation" }, dependsOnMethods = { "testOPenAll" })
 	public void testClickSecondLevelHotArticleRecommendation() {
-		List<WebElement> elements = brower.findElements(page_2.secondLevel);
-		for (int i = 0; i < elements.size(); i++) {
-			if (i == 4) {
-				elements.get(i).click();
-			}
-		}
+		WebElement artcle = page_2.getHotArtcle();
+		artcle.click();
+		Assert.assertEquals("运营后台热文推荐列表", page_2.currentPageTitle());
 	}
 
 	// 热话题推荐
-	@Test(groups = {"open_hot_topic_recommendation" })
+
+	@Test(groups = { "open_hot_topic_recommendation" }, dependsOnMethods = { "testOPenAll" })
 	public void testClickSecondLevelHotTopicRecommendation() {
-		List<WebElement> elements = brower.findElements(page_2.secondLevel);
-		for (int i = 0; i < elements.size(); i++) {
-			if (i == 5) {
-				elements.get(i).click();
-			}
-		}
+		WebElement topic = page_2.getHotTopic();
+		topic.click();
+		Assert.assertEquals("运营后台热话题推荐列表", page_2.currentPageTitle());
 	}
 
 	// 热校圈推荐
-	@Test(groups = {"open_recommendation_of_hot_calibration_circle" })
+	@Test(groups = { "open_recommendation_of_hot_calibration_circle" }, dependsOnMethods = "testOPenAll")
 	public void testClickSecondLevelRecommendationOfHotCalibrationCircle() {
-		List<WebElement> elements = brower.findElements(page_2.secondLevel);
-		for (int i = 0; i < elements.size(); i++) {
-			if (i == 6) {
-				elements.get(i).click();
-			}
-		}
+		page_2.getHotSchool().click();
+		Assert.assertEquals("运营后台名校圈推荐列表", page_2.currentPageTitle());
 	}
 
 	// 名师工作室推荐
-	@Test(groups = {"open_teaching_studio" })
+	@Test(groups = { "open_teaching_studio" }, dependsOnMethods = "testOPenAll")
 	public void testClickSecondLevelTeachingStudio() {
-		List<WebElement> elements = brower.findElements(page_2.secondLevel);
-		for (int i = 0; i < elements.size(); i++) {
-			if (i == 7) {
-				elements.get(i).click();
-			}
-		}
+		page_2.getMasterStudio().click();
+		Assert.assertEquals("运营后台名师工作室推荐列表", page_2.currentPageTitle());
 	}
 
 	// 推荐小记者
-	@Test(groups = {"open_recommendation_by_Little_journalist" })
+	@Test(groups = { "open_recommendation_by_Little_journalist" }, dependsOnMethods = "testOPenAll")
 	public void testClickSecondLevelRecommendationByLittleJournalist() {
-		List<WebElement> elements = brower.findElements(page_2.secondLevel);
-		for (int i = 0; i < elements.size(); i++) {
-			if (i == 8) {
-				elements.get(i).click();
-			}
-		}
+		page_2.getYoungReporter().click();
+		Assert.assertEquals("运营后台小记者推荐列表", page_2.currentPageTitle());
 	}
 
 	// 待审核新建学校列表
-	@Test(groups = {"open_new_schools_to_be_audited" })
+	@Test(groups = { "open_new_schools_to_be_audited" }, dependsOnMethods = "testOPenAll")
 	public void testClickSecondLevelNewSchoolsToBeAudited() {
-		List<WebElement> elements = brower.findElements(page_2.secondLevel);
-		for (int i = 0; i < elements.size(); i++) {
-			if (i == 9) {
-				elements.get(i).click();
-			}
-		}
+		page_2.getSchoolToBeAudited().click();
+		Assert.assertEquals("待审核学校列表", page_2.currentPageTitle());
 	}
 
 	// 学校列表
-	@Test(groups = {"open_schools_List" })
+	@Test(groups = { "open_schools_List" }, dependsOnMethods = "testOPenAll")
 	public void testClickSecondLevelSchoolsList() {
-		List<WebElement> elements = brower.findElements(page_2.secondLevel);
-		for (int i = 0; i < elements.size(); i++) {
-			if (i == 10) {
-				elements.get(i).click();
-			}
-		}
+		page_2.getSchoolList().click();
+		Assert.assertEquals("运营后台学校管理列表", page_2.currentPageTitle());
 	}
 
 	// 名师工作室列表
-	@Test(groups = {"open_list_of_famous_teachers_studios" })
+	@Test(groups = { "open_list_of_famous_teachers_studios" }, dependsOnMethods = "testOPenAll")
 	public void testClickSecondLevelListOfFamousTeachersStudios() {
-		List<WebElement> elements = brower.findElements(page_2.secondLevel);
-		for (int i = 0; i < elements.size(); i++) {
-			if (i == 11) {
-				elements.get(i).click();
-			}
-		}
+		page_2.getMasterStudioList().click();
+		Assert.assertEquals(page_2.currentPageTitle(), "运营后台名师管理列表");
 	}
 
 	// 话题列表
-	@Test(groups = {"open_topic_list" })
+	@Test(groups = { "open_topic_list" }, dependsOnMethods = "testOPenAll")
 	public void testClickSecondLevelTopicList() {
-		List<WebElement> elements = brower.findElements(page_2.secondLevel);
-		for (int i = 0; i < elements.size(); i++) {
-			if (i == 12) {
-				elements.get(i).click();
-			}
-		}
+		page_2.getTopicList().click();
+		Assert.assertEquals(page_2.currentPageTitle(), "运营后台话题管理列表");
 	}
 
 	// 专题列表
-	@Test(groups = {"open_list_of_topics" })
+	@Test(groups = { "open_list_of_topics" }, dependsOnMethods = "testOPenAll")
 	public void testClickSecondLevelListOfTopics() {
-		List<WebElement> elements = brower.findElements(page_2.secondLevel);
-		for (int i = 0; i < elements.size(); i++) {
-			if (i == 13) {
-				elements.get(i).click();
-			}
-		}
+		page_2.getSpecialList().click();
+		Assert.assertEquals(page_2.currentPageTitle(), "运营后台内容管理列表");
 	}
 
 	// 小程序
-	@Test(groups = {"open_small_procedures" })
+	@Test(groups = { "open_small_procedures" }, dependsOnMethods = "testOPenAll")
 	public void testClickSecondLevelSmallProcedures() {
-		List<WebElement> elements = brower.findElements(page_2.secondLevel);
-		for (int i = 0; i < elements.size(); i++) {
-			if (i == 14) {
-				elements.get(i).click();
-			}
-		}
+		page_2.getMiniProgram().click();
+		Assert.assertEquals(page_2.currentPageTitle(), "小程序专题列表");
 	}
 
 	// 站点管理
-	@Test(groups = {"open_site_management" })
+	@Test(groups = { "open_site_management" }, dependsOnMethods = "testOPenAll")
 	public void testClickSecondLevelSiteManagement() {
-		List<WebElement> elements = brower.findElements(page_2.secondLevel);
-		for (int i = 0; i < elements.size(); i++) {
-			if (i == 15) {
-				elements.get(i).click();
-			}
-		}
+		page_2.getSiteManage().click();
+		Assert.assertEquals(page_2.currentPageTitle(), "运营后台用户管理列表");
+
 	}
 
 	// 内容频道管理
-	@Test(groups = {"open_content_channel_management" })
+	@Test(groups = { "open_content_channel_management" }, dependsOnMethods = "testOPenAll")
 	public void testClickSecondLevelContentChannelManagement() {
-		List<WebElement> elements = brower.findElements(page_2.secondLevel);
-		for (int i = 0; i < elements.size(); i++) {
-			if (i == 16) {
-				elements.get(i).click();
-			}
-		}
+		page_2.getContentOfTheChannelManage().click();
+		Assert.assertEquals(page_2.currentPageTitle(), "运营后台内容频道列表");
+
 	}
 
 	// 系统内容分类管理
-	@Test(groups = {"open_system_content_classification_management" })
+	@Test(groups = { "open_system_content_classification_management" }, dependsOnMethods = "testOPenAll")
 	public void testClickSecondLevelSystemContentClassificationManagement() {
-		List<WebElement> elements = brower.findElements(page_2.secondLevel);
-		for (int i = 0; i < elements.size(); i++) {
-			if (i == 17) {
-				elements.get(i).click();
-			}
-		}
+		page_2.getSystemContentClassification().click();
+		Assert.assertEquals(page_2.currentPageTitle(), "运营后台内容分类配置");
 	}
 
 	// 角色管理
-	@Test(groups = {"open_role_management" })
+	@Test(groups = { "open_role_management" }, dependsOnMethods = "testOPenAll")
 	public void testClickSecondLevelRole_Management() {
-		List<WebElement> elements = brower.findElements(page_2.secondLevel);
-		for (int i = 0; i < elements.size(); i++) {
-			if (i == 18) {
-				elements.get(i).click();
-			}
-		}
+		page_2.getRoleManage().click();
+		Assert.assertEquals(page_2.currentPageTitle(), "角色管理列表");
 	}
 
 	// 用户管理
-	@Test(groups = {"open_user_management" })
+	@Test(groups = { "open_user_management" }, dependsOnMethods = "testOPenAll")
 	public void testClickSecondLevelUserManagement() {
-		List<WebElement> elements = brower.findElements(page_2.secondLevel);
-		for (int i = 0; i < elements.size(); i++) {
-			if (i == 19) {
-				elements.get(i).click();
-			}
-		}
+		page_2.getUserManage().click();
+		Assert.assertEquals(page_2.currentPageTitle(), "运营后台用户管理列表");
 	}
-	*/
 
 }
