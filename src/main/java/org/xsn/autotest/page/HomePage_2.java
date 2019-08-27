@@ -43,7 +43,7 @@ public class HomePage_2 extends PublicMethod {
 	// 名师工作室
 	public By masterStudio = By.xpath("//aside/ul/li[2]/ul/li/ul/li[6]");
 //	小记者推荐
-	public By youngReporter = By.xpath("//aside/ul/li[3]/ul/li/ul/li[1]");
+	public By youngReporter = By.xpath("//aside/ul/li[2]/ul/li/ul/li[7]");
 //	待审核新建学校列表
 	public By schoolToBeAudited = By.xpath("//aside/ul/li[3]/ul/li/ul/li[1]");
 //	学校列表

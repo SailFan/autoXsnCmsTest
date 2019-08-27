@@ -48,7 +48,7 @@ public class OpenNavListener implements ITestListener{
 	@Override
 	public void onFinish(ITestContext context) {
 		try {
-			Thread.sleep(3);
+			Thread.sleep(1000);
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
