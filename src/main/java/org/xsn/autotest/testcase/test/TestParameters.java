@@ -1,4 +1,4 @@
-package org.xsn.autotest.testcase;
+package org.xsn.autotest.testcase.test;
 
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Optional;

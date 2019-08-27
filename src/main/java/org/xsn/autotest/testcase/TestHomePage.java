@@ -42,7 +42,7 @@ public class TestHomePage {
 
 	@AfterClass(groups = { "check", "open.*" })
 	public void afterClass() {
-//		brower.close();
+		brower.close();
 	}
 
 	@BeforeMethod(groups = { "correct" })
@@ -60,7 +60,6 @@ public class TestHomePage {
 	}
 
 	@Test(groups = { "correct" })
-	@Ignore
 	public void testOpenModifyPageSuccess() {
 		homePage.myDDwait(10).until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("修改密码")));
 		homePage.clickModifyButton();
@@ -70,7 +69,6 @@ public class TestHomePage {
 	}
 
 	@Test(groups = { "correct" })
-	@Ignore
 	public void testLoginout() {
 		homePage.myDDwait(10).until(ExpectedConditions.visibilityOfElementLocated(By.partialLinkText("退出")));
 		homePage.clickLogoutButton();
@@ -81,13 +79,10 @@ public class TestHomePage {
 		Reporter.log("测试退出按键");
 	}
 
+//打开全部以及导航
 	@Test(groups = { "open_first_level_nav" })
 	void testOPenAll() throws InterruptedException {
-		List<WebElement> nav = page_2.getFirstStageNav();
-		for (WebElement webElement : nav) {
-			Thread.sleep(3);
-			webElement.click();
-		}
+		page_2.openFirstNav();
 	}
 
 	// 待审核列表页面
@@ -239,7 +234,7 @@ public class TestHomePage {
 	@Test(groups = { "open_user_management" }, dependsOnMethods = "testOPenAll")
 	public void testClickSecondLevelUserManagement() {
 		page_2.getUserManage().click();
-		Assert.assertEquals(page_2.currentPageTitle(), "运营后台用户管理列表");
+		Assert.assertEquals(page_2.currentPageTitle(), "用户管理列表");
 	}
 
 }

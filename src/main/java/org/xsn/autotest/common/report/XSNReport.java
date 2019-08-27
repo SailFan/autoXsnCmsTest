@@ -1,4 +1,4 @@
-package org.xsn.autotest.common;
+package org.xsn.autotest.common.report;
 
 import java.util.Collection;
 import java.util.Date;

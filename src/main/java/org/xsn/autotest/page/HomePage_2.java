@@ -76,11 +76,20 @@ public class HomePage_2 extends PublicMethod {
 		List<WebElement> elements = webDriver.findElements(navSecond);
 		return elements;
 	}
-
+	
+	
+	
 //	获取一级导航菜单
 	public List<WebElement> getFirstStageNav() {
 		List<WebElement> list = webDriver.findElements(this.navFirst);
 		return list;
+	}
+	
+	public void openFirstNav() {
+		List<WebElement> list = this.getFirstStageNav();
+		for (WebElement webElement : list) {
+			webElement.click();
+		}
 	}
 
 	// 查找待审核列表

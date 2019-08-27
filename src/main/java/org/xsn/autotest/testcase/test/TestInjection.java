@@ -1,4 +1,4 @@
-package org.xsn.autotest.testcase;
+package org.xsn.autotest.testcase.test;
 
 import java.lang.reflect.Method;
 
