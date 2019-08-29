@@ -7,6 +7,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import org.xsn.autotest.common.PublicMethod;
 
 /**
  * 
@@ -15,8 +16,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
  * @author ikan
  *
  */
-public class ContentListPage {
-	private WebDriver browser;
+public class ContentListPage extends PublicMethod{
+	
+	
+	public ContentListPage() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
 	By searchArtcleName = By.cssSelector("input[placeholder=\"文章名称\"]");
 	By searchArtcleId = By.cssSelector("input[placeholder=\"文章id\"]");
 	By queryButton = By.cssSelector("button.el-button--primary:nth-child(1)");
@@ -41,49 +48,49 @@ public class ContentListPage {
 
 	// 快速检索模块输入文章名字
 	public void setSearchArtcleName(String keysToSend) {
-		new WebDriverWait(browser, 10)
-				.until(ExpectedConditions.visibilityOf(browser.findElement(this.searchArtcleName)));
-		browser.findElement(this.searchArtcleName).sendKeys(keysToSend);
+		new WebDriverWait(super.webDriver, 10)
+				.until(ExpectedConditions.visibilityOf(super.webDriver.findElement(this.searchArtcleName)));
+		super.webDriver.findElement(this.searchArtcleName).sendKeys(keysToSend);
 	}
 
 	// 快速检索模块输入文章Id
 	public void setsearchArtcleId(String keysToSend) {
-		new WebDriverWait(browser, 10).until(ExpectedConditions.visibilityOf(browser.findElement(this.searchArtcleId)));
-		browser.findElement(this.searchArtcleId).sendKeys(keysToSend);
+		new WebDriverWait(super.webDriver, 10).until(ExpectedConditions.visibilityOf(super.webDriver.findElement(this.searchArtcleId)));
+		super.webDriver.findElement(this.searchArtcleId).sendKeys(keysToSend);
 	}
 
 	// 快速检索点击搜索
 	public void clickQueryButton() {
-		new WebDriverWait(browser, 10).until(ExpectedConditions.visibilityOf(browser.findElement(this.queryButton)));
-		browser.findElement(this.queryButton).click();
+		new WebDriverWait(super.webDriver, 10).until(ExpectedConditions.visibilityOf(super.webDriver.findElement(this.queryButton)));
+		super.webDriver.findElement(this.queryButton).click();
 	}
 
 	// 快速检索模点击重置按键
 	public void clickResetButton() {
-		new WebDriverWait(browser, 10).until(ExpectedConditions.visibilityOf(browser.findElement(this.resetButton)));
-		browser.findElement(this.resetButton).click();
+		new WebDriverWait(super.webDriver, 10).until(ExpectedConditions.visibilityOf(super.webDriver.findElement(this.resetButton)));
+		super.webDriver.findElement(this.resetButton).click();
 	}
 
 	// 点击增加文章按键
 	public void clickAddArtcle() {
-		new WebDriverWait(browser, 10)
-				.until(ExpectedConditions.visibilityOf(browser.findElement(this.addArtcleButton)));
-		browser.findElement(this.addArtcleButton).click();
+		new WebDriverWait(super.webDriver, 10)
+				.until(ExpectedConditions.visibilityOf(super.webDriver.findElement(this.addArtcleButton)));
+		super.webDriver.findElement(this.addArtcleButton).click();
 	}
 
 	// 快速减速模块点击删除按键
 
 	public void clickDeleteArtcle() {
-		new WebDriverWait(browser, 10)
-				.until(ExpectedConditions.visibilityOf(browser.findElement(this.deleteArtcleButton)));
-		browser.findElement(this.deleteArtcleButton).click();
+		new WebDriverWait(super.webDriver, 10)
+				.until(ExpectedConditions.visibilityOf(super.webDriver.findElement(this.deleteArtcleButton)));
+		super.webDriver.findElement(this.deleteArtcleButton).click();
 	}
 
 	// 选择站点分类
 	public void getZDClassify() {
-		new WebDriverWait(browser, 10)
-				.until(ExpectedConditions.visibilityOf(browser.findElement(this.selectzdClassify)));
-		List<WebElement> list = browser.findElements(this.selectzdClassify);
+		new WebDriverWait(super.webDriver, 10)
+				.until(ExpectedConditions.visibilityOf(super.webDriver.findElement(this.selectzdClassify)));
+		List<WebElement> list = super.webDriver.findElements(this.selectzdClassify);
 
 	}
 
