@@ -91,7 +91,11 @@ public class ContentListPage extends PublicMethod{
 		new WebDriverWait(super.webDriver, 10)
 				.until(ExpectedConditions.visibilityOf(super.webDriver.findElement(this.selectzdClassify)));
 		List<WebElement> list = super.webDriver.findElements(this.selectzdClassify);
-
 	}
-
+	
+	//新增文章
+	
+	
+	
+	
 }
