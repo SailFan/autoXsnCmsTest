@@ -26,7 +26,7 @@ public class Util {
 			System.setProperty("webdriver.firefox.marionette", getDir(brow));
 			FirefoxOptions options = new FirefoxOptions();
 			options.setHeadless(Boolean.TRUE);
-			brower = new FirefoxDriver(options);
+			brower = new FirefoxDriver();
 		}
 		brower.get(getUrl(env));
 		brower.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);

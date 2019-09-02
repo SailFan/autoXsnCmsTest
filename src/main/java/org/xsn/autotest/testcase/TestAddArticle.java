@@ -30,12 +30,20 @@ public class TestAddArticle {
 	} 
 	
 	
-	@Test(groups = {"check"})
-	public void test() {
-		addArticle.setTopic("haha");
-		addArticle.setSite();
-	}
+//	@Test(groups = {"check"})
+//	public void test() {
+//		addArticle.setSite();
+//		addArticle.myDDwait(10).until(ExpectedConditions.visibilityOf(addArticle.siteHome));
+//		addArticle.setSiteHome();
+//		Assert.assertEquals(addArticle.currentPageTitle(), "运营后台增加编辑文章");
+//		System.out.println(addArticle.siteHome+"siteHome");
+//	}
 	
+	@Test(groups = {"check"})
+	public void test1() {
+		addArticle.setContentType();
+		addArticle.getContentOptions("公益");
+	}
 	
 	
 	@AfterClass
